@@ -22,3 +22,12 @@ movies = [
 movies.each do |movie|
   Movie.create!(movie)
 end
+
+
+breeders = [
+  {name: "Hello Kitty", country: "United States", address: "Columbia University", rating: 5}
+]
+
+breeders.each do | breeder |
+  Breeder.create!(breeder)
+end
