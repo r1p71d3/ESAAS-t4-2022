@@ -10,5 +10,7 @@
 
 ## Test and Run
 
-- [ ] Under Development
+```bash
+bundle install --without production
+```
 

@@ -1,6 +1,55 @@
-<h1>Editing Breeder</h1>
+<div class="columns">
+  <div class="column">
+    <h3 class="title">Edit Breeder</h3>
+  </div>
+</div>
 
-<%= render 'form' %>
+<div class="columns is-mobile is-centered">
+  <div class="column is-10">
+    <%= form_tag breeder_path(@breeder), :method => :put do %>
+      <div class="field">
+        <%= label :breeder, :name, "Breeder Name", class:'label' %>
+        <div class="control">
+          <%= text_field :breeder, 'name', class:'input' %>
+        </div>
+      </div>
 
-<%= link_to 'Show', @breeder %> |
-<%= link_to 'Back', breeders_path %>
+      <div class="field">
+        <%= label :breeder, :country, "Country", class:'label' %>
+        <div class="control">
+          <%= text_field :breeder, 'country', class:'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= label :breeder, :address, "Address", class:'label' %>
+        <div class="control">
+          <%= text_field :breeder, 'address', class:'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= label :breeder, :price, "Price", class:'label' %>
+        <div class="control">
+          <%= text_field :breeder, 'price', class:'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= label :breeder, :rating, "Rating", class:'label' %>
+        <div class="control">
+          <%= text_field :breeder, 'rating', class:'input', type:'number', step: '0.1' %>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <%= submit_tag 'Update', class: 'button is-warning' %>
+        </div>
+        <div class="control">
+          <%= link_to 'Cancel', breeder_path, class: 'button' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
