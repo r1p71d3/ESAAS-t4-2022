@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @breeder.name %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @breeder.country %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @breeder.address %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @breeder.price %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @breeder.rating %>
+</p>
+
+<%= link_to 'Edit', edit_breeder_path(@breeder) %> |
+<%= link_to 'Back', breeders_path %>
