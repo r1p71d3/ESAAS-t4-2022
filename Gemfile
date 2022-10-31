@@ -28,6 +28,10 @@ group :development, :test do
   gem 'sqlite3', '~> 1.3.6'
 end
 
+group :test do
+  gem 'simplecov', :require => false
+end
+
 group :production do
   gem 'pg', '~> 0.2'
   gem 'rails_12factor'
