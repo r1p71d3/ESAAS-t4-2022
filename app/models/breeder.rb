@@ -1,3 +1,3 @@
 class Breeder < ActiveRecord::Base
-  # has_many :breeder
+  has_many :breeder
 end
