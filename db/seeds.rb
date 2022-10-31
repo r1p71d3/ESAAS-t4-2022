@@ -25,9 +25,20 @@ end
 
 
 breeders = [
-  {name: "Hello Kitty", country: "United States", address: "Columbia University", rating: 5}
+  { name: "Hello Kitty", country: "United States", address: "Columbia University", price: "$$$", rating: 5 },
+  { name: "Dog House", country: "United States", address: "Northwestern University", price: "$$", rating: 4.9 }
 ]
 
-breeders.each do | breeder |
-  Breeder.create!(breeder)
+animals = [
+  {name: "Kite", animal_type: "Cat", personality: "EXTREMELY ACTIVE", price: "$250", breeders_id: 1},
+  {name: "Crystal", animal_type: "Cat", personality: "Quiet and noble", price: "$370", breeders_id: 1},
+  {name: "Sun", animal_type: "Dog", personality: "Unstable", price: "400", breeders_id: 2}
+]
+
+breeders.each do | b |
+  Breeder.create!(b)
+end
+
+animals.each do | a |
+  Animal.create!(a)
 end
