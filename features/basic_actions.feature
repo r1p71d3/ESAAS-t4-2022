@@ -11,21 +11,7 @@ Feature: display and interact with a list of breeders
     And  I am on the breeders page
     Then 3 seed breeders should exist
 
-#  Scenario: restrict to movies with "PG" or "R" ratings
-#    And I check the "PG" checkbox
-#  # enter step(s) to check the "PG" and "R" checkboxes
-#    When I check the following ratings: PG, R
-#  # enter step(s) to uncheck all other checkboxes
-#    When I uncheck the following ratings: G, PG-13
-#  # enter step to "submit" the search form on the homepage
-#    When I press "ratings_submit"
-#  # enter step(s) to ensure that PG and R movies are visible
-#    Then I should see the following movies: Amelie, Raiders of the Lost Ark, The Incredibles, The Terminator, When Harry Met Sally
-#  # enter step(s) to ensure that other movies are not visible
-#    Then I should not see the following movies: 2001: A Space Odyssey, Aladdin, Chicken Run, Chocolat, The Help
-
   Scenario: displaying breeders
-  # your steps here
     Given I am on the breeders page
     Then I should see the following breeders: HappyPets, PawLine, InuToNeko
     And I should not see the following breeders: PeppyPets, ClawLine, NekoToInu
@@ -33,4 +19,45 @@ Feature: display and interact with a list of breeders
   Scenario: visiting a breeder page
     Given I am on the breeders page
     When I follow "HappyPets"
-    Then I should be on the breeder details page for "HappyPets"
+    Then I should see "Breeder: HappyPets"
+
+  Scenario: opening edit page and editing
+    Given I am on the breeder details page for "HappyPets"
+    And I follow "Edit"
+    Then I should see "Edit Breeder"
+    When I fill in "Address" with "NYU"
+    And I press "Update"
+    Then I should see "Breeder was successfully updated."
+    And I should see "NYU"
+
+  Scenario: canceling edit
+    Given I am on the edit breeder page for "HappyPets"
+    When I fill in "Address" with "NYU"
+    And I follow "Cancel"
+    Then I should not see "Breeder was successfully updated."
+    And I should see "New York"
+
+  Scenario: deleting breeder
+    Given I am on the breeder details page for "HappyPets"
+    And I follow "Delete"
+    And I should see "Breeder was successfully destroyed."
+    And I should not see "HappyPets"
+
+  Scenario: creating a new breeder
+    Given I am on the breeders page
+    When I follow "New Breeder"
+    Then I should see "Add a New Breeder"
+    When I fill in "Breeder Name" with "FantastischeHaustiere"
+    And I fill in "Country" with "Germany"
+    And I fill in "Address" with "Berlin"
+    And I press "Submit"
+    Then I should see "Breeder was successfully created."
+    And I should see "FantastischeHaustiere"
+    And I should see "Germany"
+    And I should see "Berlin"
+    When I follow "Back"
+    Then I should see "FantastischeHaustiere"
+
+
+
+  
