@@ -33,4 +33,4 @@ Feature: display and interact with a list of breeders
   Scenario: visiting a breeder page
     Given I am on the breeders page
     When I follow "HappyPets"
-    Then I should be on the details page for "HappyPets"
+    Then I should be on the breeder details page for "HappyPets"
