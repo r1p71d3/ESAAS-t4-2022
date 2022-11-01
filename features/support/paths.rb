@@ -16,10 +16,16 @@ module NavigationHelpers
     when /^the (PawsAndTails )?home\s?page$/ then '/animals'
     when /^the animals page$/ then '/animals'
     when /^the breeders page$/ then '/breeders'
-    when /the edit page for "(.*)"$/
+      
+    when /the edit breeder page for "(.*)"$/
       then edit_breeder_path(Breeder.where("name=?",$1).first)
-    when /the details page for "(.*)"$/
+    when /the breeder details page for "(.*)"$/
       then breeder_path(Breeder.where("name=?",$1).first)
+
+    when /the edit animal page for "(.*)"$/
+      then edit_animal_path(Animal.where("name=?",$1).first)
+    when /the Animal details page for "(.*)"$/
+      then animal_path(Animal.where("name=?",$1).first)
 
 
     # Add more mappings here.
