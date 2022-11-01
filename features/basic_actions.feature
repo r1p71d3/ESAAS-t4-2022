@@ -25,22 +25,33 @@ Feature: display and interact with a list of breeders
     Given I am on the breeder details page for "HappyPets"
     And I follow "Edit"
     Then I should see "Edit Breeder"
-    When I fill in "Address" with "NYU"
+    When I fill in "Breeder Name" with "PeppyPets"
+    And I fill in "Address" with "NYU"
     And I press "Update"
     Then I should see "Breeder was successfully updated."
+    And I should see "PeppyPets"
     And I should see "NYU"
+    When I follow "Back"
+    Then I should see "PeppyPets"
 
   Scenario: canceling edit
     Given I am on the edit breeder page for "HappyPets"
-    When I fill in "Address" with "NYU"
+    When I fill in "Breeder Name" with "PeppyPets"
+    And I fill in "Address" with "NYU"
     And I follow "Cancel"
     Then I should not see "Breeder was successfully updated."
+    And I should see "HappyPets"
     And I should see "New York"
+    And I should not see "PeppyPets"
+    And I should not see "NYU"
+    When I follow "Back"
+    Then I should see "HappyPets"
+    And I should not see "PeppyPets"
 
   Scenario: deleting breeder
     Given I am on the breeder details page for "HappyPets"
     And I follow "Delete"
-    And I should see "Breeder was successfully destroyed."
+    Then I should see "Breeder was successfully destroyed."
     And I should not see "HappyPets"
 
   Scenario: creating a new breeder
