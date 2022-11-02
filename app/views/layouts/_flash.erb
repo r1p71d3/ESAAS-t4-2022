@@ -1,9 +1,11 @@
 <% if flash[:notice] %>
-  <div class="alert alert-info" role="alert" id="notice">
+  <div class="notification is-success is-light">
+    <button class="delete" aria-label="delete"></button>
     <%= flash[:notice] %>
   </div>
 <% elsif flash[:warning] %>
-  <div class="alert alert-danger" role="alert" id="warning">
+  <div class="notification is-danger">
+    <button class="delete" aria-label="delete"></button>
     <%= flash[:warning] %>
   </div>
 <% end %>

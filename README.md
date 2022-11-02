@@ -2,7 +2,7 @@
 
 *Bring Your New Best Friend Home.*
 
-## Team Members
+## Team Members 
 
 	Tianqi Zhao (tz2529)
 	Jiacheng Yin (jy3280)
@@ -10,5 +10,7 @@
 
 ## Test and Run
 
-- [ ] Under Development
+```bash
+bundle install --without production
+```
 
