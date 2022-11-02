@@ -29,10 +29,16 @@ breeders = [
   { name: "Dog House", country: "United States", address: "Northwestern University", price: "$$", rating: 4.9 }
 ]
 
+# animals = [
+#   {name: "Kite", animal_type: "Cat", personality: "EXTREMELY ACTIVE", price: "$250", breeders_id: 1},
+#   {name: "Crystal", animal_type: "Cat", personality: "Quiet and noble", price: "$370", breeders_id: 1},
+#   {name: "Sun", animal_type: "Dog", personality: "Unstable", price: "400", breeders_id: 2}
+# ]
+
 animals = [
-  {name: "Kite", animal_type: "Cat", personality: "EXTREMELY ACTIVE", price: "$250", breeders_id: 1},
-  {name: "Crystal", animal_type: "Cat", personality: "Quiet and noble", price: "$370", breeders_id: 1},
-  {name: "Sun", animal_type: "Dog", personality: "Unstable", price: "400", breeders_id: 2}
+  {name: "Kite", animal_type: "Cat", personality: "EXTREMELY ACTIVE", price: "$250"},
+  {name: "Crystal", animal_type: "Cat", personality: "Quiet and noble", price: "$370"},
+  {name: "Sun", animal_type: "Dog", personality: "Unstable", price: "400"}
 ]
 
 breeders.each do | b |
