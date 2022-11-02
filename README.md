@@ -9,6 +9,7 @@ We are building a SAAS app that aims to connect pet finders and breeders togethe
 * [For the TA Team](#for-the-ta-team)
   * [How to Run and Test the Project Locally](#how-to-run-and-test-the-project-locally)
   * [Deployed Project](#deployed-project)
+  * [Git](#git)
 <!-- TOC -->
 
 ## Team Members 
@@ -60,3 +61,9 @@ Now, checkout `coverage/index.html`!
 ### Deployed Project
 
 Our project is running at: [https://paws-and-tails.herokuapp.com/](https://paws-and-tails.herokuapp.com/)
+
+### Git
+
+For project iteration 1, please checkout the `iter-1` branch.
+
+[Iteration 1 Submission](https://github.com/r1p71d3/ESAAS-t4-2022/tree/iter-1)
