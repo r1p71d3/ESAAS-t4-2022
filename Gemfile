@@ -30,6 +30,7 @@ end
 
 group :test do
   gem 'simplecov', :require => false
+  gem 'shoulda', '~> 4.0'
 end
 
 group :production do

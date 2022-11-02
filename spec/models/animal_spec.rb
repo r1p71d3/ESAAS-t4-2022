@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Animal, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # it {should belong_to(:breeder)}
 end
+
+# TODO: Update in iteration 2

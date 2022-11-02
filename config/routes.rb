@@ -1,8 +1,7 @@
 Rottenpotatoes::Application.routes.draw do
   resources :animals
   resources :breeders
-  resources :movies
+  # resources :movies
   # map '/' to be a redirect to '/movies'
   root :to => redirect('/animals')
-
 end
