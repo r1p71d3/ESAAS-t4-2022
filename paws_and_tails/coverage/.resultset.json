@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/environment.rb": {
+      "/usr/src/app/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -10,7 +10,7 @@
           1
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/application.rb": {
+      "/usr/src/app/config/application.rb": {
         "lines": [
           1,
           null,
@@ -36,7 +36,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/boot.rb": {
+      "/usr/src/app/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -44,7 +44,7 @@
           1
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/environments/test.rb": {
+      "/usr/src/app/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -112,7 +112,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/assets.rb": {
+      "/usr/src/app/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -128,7 +128,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/content_security_policy.rb": {
+      "/usr/src/app/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -139,38 +139,6 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/filter_parameter_logging.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/inflections.rb": {
-        "lines": [
           null,
           null,
           null,
@@ -189,7 +157,39 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/permissions_policy.rb": {
+      "/usr/src/app/config/initializers/filter_parameter_logging.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/usr/src/app/config/initializers/inflections.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/usr/src/app/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -204,7 +204,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/routes.rb": {
+      "/usr/src/app/config/routes.rb": {
         "lines": [
           1,
           null,
@@ -220,7 +220,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/features/step_definitions/animal_steps.rb": {
+      "/usr/src/app/features/step_definitions/animal_steps.rb": {
         "lines": [
           1,
           6,
@@ -261,7 +261,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/features/step_definitions/breeder_steps.rb": {
+      "/usr/src/app/features/step_definitions/breeder_steps.rb": {
         "lines": [
           1,
           6,
@@ -370,28 +370,28 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/models/breeder.rb": {
+      "/usr/src/app/app/models/breeder.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/models/application_record.rb": {
+      "/usr/src/app/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/models/animal.rb": {
+      "/usr/src/app/app/models/animal.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/controllers/animals_controller.rb": {
+      "/usr/src/app/app/controllers/animals_controller.rb": {
         "lines": [
           1,
           1,
@@ -453,19 +453,19 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/controllers/application_controller.rb": {
+      "/usr/src/app/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/helpers/application_helper.rb": {
+      "/usr/src/app/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/controllers/breeders_controller.rb": {
+      "/usr/src/app/app/controllers/breeders_controller.rb": {
         "lines": [
           1,
           1,
@@ -528,11 +528,11 @@
         ]
       }
     },
-    "timestamp": 1668198104
+    "timestamp": 1668287411
   },
   "RSpec": {
     "coverage": {
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/spec/models/animal_spec.rb": {
+      "/usr/src/app/spec/models/animal_spec.rb": {
         "lines": [
           1,
           null,
@@ -541,7 +541,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/environment.rb": {
+      "/usr/src/app/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -550,7 +550,7 @@
           1
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/application.rb": {
+      "/usr/src/app/config/application.rb": {
         "lines": [
           1,
           null,
@@ -576,7 +576,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/boot.rb": {
+      "/usr/src/app/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -584,7 +584,7 @@
           1
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/environments/test.rb": {
+      "/usr/src/app/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -652,7 +652,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/assets.rb": {
+      "/usr/src/app/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -668,7 +668,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/content_security_policy.rb": {
+      "/usr/src/app/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -679,38 +679,6 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/filter_parameter_logging.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/inflections.rb": {
-        "lines": [
           null,
           null,
           null,
@@ -729,7 +697,39 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/initializers/permissions_policy.rb": {
+      "/usr/src/app/config/initializers/filter_parameter_logging.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/usr/src/app/config/initializers/inflections.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/usr/src/app/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -744,7 +744,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/config/routes.rb": {
+      "/usr/src/app/config/routes.rb": {
         "lines": [
           1,
           null,
@@ -760,27 +760,27 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/helpers/application_helper.rb": {
+      "/usr/src/app/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/models/animal.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/models/application_record.rb": {
+      "/usr/src/app/app/models/animal.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/spec/models/breeder_spec.rb": {
+      "/usr/src/app/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/usr/src/app/spec/models/breeder_spec.rb": {
         "lines": [
           1,
           null,
@@ -789,14 +789,14 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/models/breeder.rb": {
+      "/usr/src/app/app/models/breeder.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/spec/requests/animal_spec.rb": {
+      "/usr/src/app/spec/requests/animal_spec.rb": {
         "lines": [
           1,
           null,
@@ -943,7 +943,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/spec/requests/breeder_spec.rb": {
+      "/usr/src/app/spec/requests/breeder_spec.rb": {
         "lines": [
           1,
           null,
@@ -1075,7 +1075,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/spec/views/animal/index.html.erb_spec.rb": {
+      "/usr/src/app/spec/views/animal/index.html.erb_spec.rb": {
         "lines": [
           1,
           null,
@@ -1084,7 +1084,7 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/controllers/animals_controller.rb": {
+      "/usr/src/app/app/controllers/animals_controller.rb": {
         "lines": [
           1,
           1,
@@ -1146,13 +1146,13 @@
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/controllers/application_controller.rb": {
+      "/usr/src/app/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/tianqi/Documents/GitHub/ESAAS-t4-2022/paws_and_tails/app/controllers/breeders_controller.rb": {
+      "/usr/src/app/app/controllers/breeders_controller.rb": {
         "lines": [
           1,
           1,
@@ -1215,6 +1215,6 @@
         ]
       }
     },
-    "timestamp": 1668198149
+    "timestamp": 1668287175
   }
 }
