@@ -31,6 +31,10 @@ After that, simply run:
 
 `docker compose up`
 
+Or, you can also run,
+
+`docker run --rm -p 3000:3000 paws_and_rails-web`
+
 will start the rails app.
 
 ## 4. Running Tests
@@ -42,3 +46,21 @@ Rspec:
 Cucumber:
 
 `docker compose run --rm web rails cucumber`
+
+## Troubleshoot
+
+If you run into the following issue:
+
+```bash
+strconv.Atoi: parsing "": invalid syntax
+```
+
+Just run this script:
+
+```bash
+sudo docker system prune
+```
+
+## Save for future reference
+
+`docker run --rm -p 3000:3000 --env-file .env looouisz/paws_and_tails`
