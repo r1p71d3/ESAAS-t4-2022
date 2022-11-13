@@ -39,11 +39,15 @@ will start the rails app.
 
 ## 4. Running Tests
 
-Rspec:
+Run all the tests at once using `guard`:
+
+`docker-compose run --rm web bundle exec guard`
+
+Only run rspec:
 
 `docker compose run --rm web rails spec`
 
-Cucumber:
+Only run cucumber:
 
 `docker compose run --rm web rails cucumber`
 

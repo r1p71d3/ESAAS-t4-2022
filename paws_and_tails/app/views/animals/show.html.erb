@@ -5,6 +5,16 @@
 </div>
 
 <div class="columns is-mobile is-centered">
+  <div class="column is-6 has-text-centered">
+    <% if @animal.image_link.nil? %>
+      <img src="https://picsum.photos/id/237/300/200" alt="placeholder">
+    <% else %>
+      <img src="<%= @animal.image_link %>" alt="animal picture">
+    <% end %>
+  </div>
+</div>
+
+<div class="columns is-mobile is-centered">
   <div class="column is-10">
     <div class="box">
       <div class="columns">
