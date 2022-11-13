@@ -8,6 +8,7 @@ class AnimalsController < ApplicationController
 
   # GET /animals/1
   def show
+    @breeder = Animal.get_breeder(params[:id])
   end
 
   # GET /animals/new
@@ -53,6 +54,6 @@ class AnimalsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def animal_params
-    params.require(:animal).permit(:name, :animal_type, :breed, :price, :anticipated_birthday, :breeder_id)
+    params.require(:animal).permit(:name, :animal_type, :breed, :price, :anticipated_birthday, :breeder_id, :image_link)
   end
 end
