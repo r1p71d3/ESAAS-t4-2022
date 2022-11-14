@@ -388,6 +388,12 @@
         "lines": [
           1,
           1,
+          null,
+          1,
+          124,
+          124,
+          124,
+          null,
           null
         ]
       },
@@ -403,6 +409,7 @@
           null,
           null,
           1,
+          7,
           null,
           null,
           null,
@@ -528,7 +535,7 @@
         ]
       }
     },
-    "timestamp": 1668357251
+    "timestamp": 1668375975
   },
   "RSpec": {
     "coverage": {
@@ -770,6 +777,12 @@
         "lines": [
           1,
           1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
           null
         ]
       },
@@ -1096,6 +1109,7 @@
           null,
           null,
           1,
+          1,
           null,
           null,
           null,
@@ -1215,6 +1229,6 @@
         ]
       }
     },
-    "timestamp": 1668356715
+    "timestamp": 1668376231
   }
 }
