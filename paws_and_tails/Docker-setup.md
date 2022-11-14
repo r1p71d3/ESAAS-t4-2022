@@ -9,7 +9,7 @@ Download Docker here: [https://www.docker.com/](https://www.docker.com/)
 Make sure your docker compose version:
 
 ```bash
-docker compose version
+docker-compose --version
 >> Docker Compose version v2.10.2
 ```
 
@@ -23,13 +23,13 @@ docker compose version
 Run:
 
 ```bash 
-docker compose build
-docker compose run --rm web bin/rails db:test:prepare
+docker-compose build
+docker-compose run --rm web bin/rails db:test:prepare
 ```
 
 After that, simply run:
 
-`docker compose up`
+`docker-compose up`
 
 Or, you can also run,
 
@@ -45,11 +45,11 @@ Run all the tests at once using `guard`:
 
 Only run rspec:
 
-`docker compose run --rm web rails spec`
+`docker-compose run --rm web rails spec`
 
 Only run cucumber:
 
-`docker compose run --rm web rails cucumber`
+`docker-compose run --rm web rails cucumber`
 
 ## Troubleshoot
 
