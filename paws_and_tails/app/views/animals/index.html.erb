@@ -5,6 +5,60 @@
   </div>
 </div>
 
+<br><br>
+
+<div class="columns is-multiline is-centered is-mobile has-background-light">
+  <div class="column is-12 has-text-centered">
+    <span class="subtitle is-size-3">Search for Breeder Location</span>
+  </div>
+  <div class="column is-6 has-text-right">
+    <div id="dropdown-city" class="dropdown mr-3">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>City</span>
+          <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <% @cities.each do | city | %>
+            <a href="#" class="dropdown-item">
+              <%= city %>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div id="dropdown-country" class="dropdown">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>Country</span>
+          <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <% @countries.each do | country | %>
+            <a href="#" class="dropdown-item">
+              <%= country %>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-6">
+    <button class="button is-warning mr-3">Submit</button>
+    <button class="button is-warning is-light">Reset</button>
+  </div>
+</div>
+
+<br><br>
+
 <div class="columns is-mobile is-centered">
   <div class="column is-10">
     <div class="columns is-multiline is-mobile">

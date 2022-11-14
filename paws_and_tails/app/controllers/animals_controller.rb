@@ -3,7 +3,9 @@ class AnimalsController < ApplicationController
 
   # GET /animals
   def index
-    @animals = Animal.all
+    @animals = Animal.all.order(:name)
+    @cities = Breeder.get_city_all.sort
+    @countries = Breeder.get_country_all.sort
   end
 
   # GET /animals/1

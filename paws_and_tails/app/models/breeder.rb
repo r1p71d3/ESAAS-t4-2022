@@ -6,4 +6,11 @@ class Breeder < ApplicationRecord
     return animals
   end
 
+  def self.get_city_all
+    Breeder.distinct.pluck(:city)
+  end
+
+  def self.get_country_all
+    Breeder.distinct.pluck(:country)
+  end
 end
