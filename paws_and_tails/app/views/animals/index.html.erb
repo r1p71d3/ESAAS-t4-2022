@@ -15,7 +15,7 @@
     <div id="dropdown-city" class="dropdown mr-3">
       <div class="dropdown-trigger">
         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span>City</span>
+          <span id="current-city">Any City</span>
           <span class="icon is-small">
         <i class="fas fa-angle-down" aria-hidden="true"></i>
       </span>
@@ -24,17 +24,20 @@
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
           <% @cities.each do | city | %>
-            <a href="#" class="dropdown-item">
+            <a href="#" class="dropdown-item city-dropdown-select">
               <%= city %>
             </a>
           <% end %>
+          <a href="#" class="dropdown-item city-dropdown-select">
+            Any City
+          </a>
         </div>
       </div>
     </div>
     <div id="dropdown-country" class="dropdown">
       <div class="dropdown-trigger">
         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span>Country</span>
+          <span id="current-country">Any Country</span>
           <span class="icon is-small">
         <i class="fas fa-angle-down" aria-hidden="true"></i>
       </span>
@@ -43,17 +46,20 @@
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
           <% @countries.each do | country | %>
-            <a href="#" class="dropdown-item">
+            <a href="#" class="dropdown-item country-dropdown-select">
               <%= country %>
             </a>
           <% end %>
+          <a href="#" class="dropdown-item country-dropdown-select">
+            Any Country
+          </a>
         </div>
       </div>
     </div>
   </div>
   <div class="column is-6">
-    <button class="button is-warning mr-3">Submit</button>
-    <button class="button is-warning is-light">Reset</button>
+    <button id="submit-location" class="button is-warning mr-3">Submit</button>
+    <button id="reset-location" class="button is-warning is-light">Reset</button>
   </div>
 </div>
 
@@ -61,43 +67,8 @@
 
 <div class="columns is-mobile is-centered">
   <div class="column is-10">
-    <div class="columns is-multiline is-mobile">
-      <% @animals.each do | animal | %>
-        <div class="column is-4">
-          <div class="card shadow-md is-cursor-pointer transform is-duration-300 hover-shadow-xl hover-translate-y">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <% if animal.image_link.nil? %>
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                <% else %>
-                  <img src="<%= animal.image_link %>" alt="animal picture">
-                <% end %>
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4"><%= link_to animal.name, animal_path(animal) %></p>
-                  <p class="subtitle is-6">@My breeder: <%= Animal.get_breeder(animal.id).name %></p>
-                </div>
-              </div>
-
-              <div class="content">
-                Animal Type: <%= animal.animal_type %>
-                <br>
-                Breed: <%= animal.breed %>
-                <br>
-                Price: <%= animal.price %>
-                <br>
-                Anticipated Birth: <%= animal.anticipated_birthday.getlocal.strftime("%B %d, %Y") %>
-                <br>
-                <br>
-                <strong>Location:</strong> <%= Animal.get_breeder(animal.id).city%>, <%= Animal.get_breeder(animal.id).country%>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+    <div id="animals-container" class="columns is-multiline is-mobile">
+      <%= render partial: "animal_grid", locals: {animals_var: @animals} %>
     </div>
   </div>
 </div>
@@ -108,36 +79,3 @@
     <%= link_to 'New Animal', new_animal_path, class:"button is-warning is-light" %>
   </div>
 </div>
-
-
-<!--<h1>Listing Animals</h1>-->
-
-<!--<table>-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th>Name</th>-->
-<!--      <th>Type</th>-->
-<!--      <th>Personality</th>-->
-<!--      <th>Price</th>-->
-<!--      <th colspan="3"></th>-->
-<!--    </tr>-->
-<!--  </thead>-->
-
-<!--  <tbody>-->
-<%# @animals.each do |animal| %>
-<!--      <tr>-->
-<!--        <td><%#= animal.name %></td>-->
-<!--        <td><%#= animal.animal_type %></td>-->
-<!--        <td><%#= animal.personality %></td>-->
-<!--        <td><%#= animal.price %></td>-->
-<!--        <td><%#= link_to 'Show', animal %></td>-->
-<!--        <td><%#= link_to 'Edit', edit_animal_path(animal) %></td>-->
-<!--        <td><%#= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-<!--      </tr>-->
-<%# end %>
-<!--  </tbody>-->
-<!--</table>-->
-
-<!--<br>-->
-
-<%#= link_to 'New Animal', new_animal_path %>

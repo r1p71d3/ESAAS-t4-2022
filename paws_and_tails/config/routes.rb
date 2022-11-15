@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :animals
   resources :breeders
 
+  post "/animals/api/sort_location", to: "animals#sort_location"
+
   # get "/animals", to: "animals#index"
   # get "/animals/:id", to: "animals#show"
 end

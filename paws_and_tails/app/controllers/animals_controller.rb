@@ -1,5 +1,6 @@
 class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy]
+  # skip_before_action :verify_authenticity_token
 
   # GET /animals
   def index
@@ -46,6 +47,23 @@ class AnimalsController < ApplicationController
   def destroy
     @animal.destroy
     redirect_to animals_url, notice: 'Animal was successfully destroyed.'
+  end
+
+  def sort_location
+    city = params[:city] == "Any City" ? nil : params[:city]
+    country = params[:country] == "Any Country" ? nil : params[:country]
+
+    animals = Animal.location_refine city, country
+
+    breeders = Array.new
+
+    animals.each do |each_animal|
+      breeders.push(Animal.get_breeder(each_animal.id))
+    end
+
+    respond_to do | format |
+      format.json { render json: {animals: animals, breeders: breeders} }
+    end
   end
 
   private
