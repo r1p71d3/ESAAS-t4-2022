@@ -1,13 +1,17 @@
 class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy]
+  # skip_before_action :verify_authenticity_token
 
   # GET /animals
   def index
-    @animals = Animal.all
+    @animals = Animal.all.order(:name)
+    @cities = Breeder.get_city_all.sort
+    @countries = Breeder.get_country_all.sort
   end
 
   # GET /animals/1
   def show
+    @breeder = Animal.get_breeder(params[:id])
   end
 
   # GET /animals/new
@@ -45,6 +49,32 @@ class AnimalsController < ApplicationController
     redirect_to animals_url, notice: 'Animal was successfully destroyed.'
   end
 
+  def sort_location
+    city = params[:city] == "Any City" ? nil : params[:city]
+    country = params[:country] == "Any Country" ? nil : params[:country]
+    sorting_method = params[:sorting]
+
+    animals = Animal.location_refine city, country
+
+    if sorting_method == "Any" || sorting_method == "name"
+      animals = animals.order(:name)
+    elsif sorting_method != "city" && sorting_method != "country"
+      animals = animals.order(sorting_method)
+    else
+      animals = animals.includes(:breeder).order("breeders.#{sorting_method}")
+    end
+
+    breeders = Array.new
+
+    animals.each do |each_animal|
+      breeders.push(Animal.get_breeder(each_animal.id))
+    end
+
+    respond_to do | format |
+      format.json { render json: {animals: animals, breeders: breeders} }
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_animal
@@ -53,6 +83,6 @@ class AnimalsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def animal_params
-    params.require(:animal).permit(:name, :animal_type, :breed, :price, :anticipated_birthday, :breeder_id)
+    params.require(:animal).permit(:name, :animal_type, :breed, :price, :anticipated_birthday, :breeder_id, :image_link)
   end
 end

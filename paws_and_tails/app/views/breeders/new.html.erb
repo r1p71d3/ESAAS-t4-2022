@@ -7,50 +7,12 @@
 
 <div class="columns is-mobile is-centered">
   <div class="column is-10">
-    <%= form_tag breeders_path class:"form" do %>
-      <div class="field">
-        <%= label :breeder, :name, "Breeder Name", class:'label' %>
-        <div class="control">
-          <%= text_field :breeder, 'name', class:'input' %>
-        </div>
-      </div>
+    <%= render 'form' %>
+  </div>
+</div>
 
-      <div class="field">
-        <%= label :breeder, :city, "City", class:'label' %>
-        <div class="control">
-          <%= text_field :breeder, 'city', class:'input' %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= label :breeder, :country, "Country", class:'label' %>
-        <div class="control">
-          <%= text_field :breeder, 'country', class:'input' %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= label :breeder, :price_level, "Price Level", class:'label' %>
-        <div class="control">
-          <%= text_field :breeder, 'price_level', class:'input' %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= label :breeder, :address, "Address", class:'label' %>
-        <div class="control">
-          <%= text_field :breeder, 'address', class:'input' %>
-        </div>
-      </div>
-
-      <div class="field is-grouped">
-        <div class="control">
-          <%= submit_tag 'Submit', class: 'button is-warning' %>
-        </div>
-        <div class="control">
-          <%= link_to 'Cancel', breeders_url, class: 'button' %>
-        </div>
-      </div>
-    <% end %>
+<div class="columns is-mobile is-centered">
+  <div class="column is-10">
+    <%= link_to 'Cancel', breeders_url, class: 'button' %>
   </div>
 </div>
