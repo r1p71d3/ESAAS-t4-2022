@@ -28,6 +28,6 @@ class Animal < ApplicationRecord
       # find city and country
       animals = Animal.joins(:breeder).where(breeders: {city: city, country: country})
     end
-    return animals.order(:name)
+    return animals
   end
 end

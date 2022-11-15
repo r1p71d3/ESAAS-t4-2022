@@ -52,8 +52,17 @@ class AnimalsController < ApplicationController
   def sort_location
     city = params[:city] == "Any City" ? nil : params[:city]
     country = params[:country] == "Any Country" ? nil : params[:country]
+    sorting_method = params[:sorting]
 
     animals = Animal.location_refine city, country
+
+    if sorting_method == "Any" || sorting_method == "name"
+      animals = animals.order(:name)
+    elsif sorting_method != "city" && sorting_method != "country"
+      animals = animals.order(sorting_method)
+    else
+      animals = animals.includes(:breeder).order("breeders.#{sorting_method}")
+    end
 
     breeders = Array.new
 

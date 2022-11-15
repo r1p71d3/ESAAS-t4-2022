@@ -57,6 +57,6 @@ class BreedersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def breeder_params
-    params.require(:breeder).permit(:name, :city, :country, :price_level, :address)
+    params.require(:breeder).permit(:name, :city, :country, :price_level, :address, :email)
   end
 end

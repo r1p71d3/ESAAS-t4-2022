@@ -71,7 +71,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
        event.preventDefault();
 
         sendFetchToAnimals(document.querySelector("#current-city").innerText,
-            document.querySelector("#current-country").innerText);
+            document.querySelector("#current-country").innerText,
+            "Any");
     });
 
 
@@ -82,7 +83,28 @@ document.addEventListener("DOMContentLoaded", function (event) {
         document.querySelector("#current-city").innerText = "Any City";
         document.querySelector("#current-country").innerText = "Any Country";
 
-        sendFetchToAnimals("Any City", "Any Country");
+        sendFetchToAnimals("Any City", "Any Country", "Any");
+    });
+
+
+    // ********** Sorting Buttons **********
+    let sortingBtnAll = document.querySelectorAll(".animal-sort-button");
+    sortingBtnAll.forEach((item, index) => {
+        item.addEventListener("click", function (event) {
+           event.preventDefault();
+
+           let sortingMethod = null;
+
+           item.classList.forEach((cl_item, cl_index) => {
+               if (/sort-.*/.test(cl_item)) {
+                   sortingMethod = cl_item.split("-")[1];
+               }
+           });
+
+           sendFetchToAnimals(document.querySelector("#current-city").innerText,
+               document.querySelector("#current-country").innerText,
+               sortingMethod);
+        });
     });
 });
 
@@ -91,8 +113,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
  * Send fetch request
  * @param city
  * @param country
+ * @param sorting
  */
-function sendFetchToAnimals(city, country) {
+function sendFetchToAnimals(city, country, sorting) {
     let token = getToken();
     fetch("/animals/api/sort_location", {
         method: "POST",
@@ -103,7 +126,8 @@ function sendFetchToAnimals(city, country) {
         },
         body: JSON.stringify({
             "city": city,
-            "country": country
+            "country": country,
+            "sorting": sorting
         }),
         credentials: 'same-origin'
     })
