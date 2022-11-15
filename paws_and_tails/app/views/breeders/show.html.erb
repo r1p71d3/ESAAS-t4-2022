@@ -74,7 +74,7 @@
                 <br>
                 Price: <%= animal.price %>
                 <br>
-                Anticipated Birth: <%= animal.anticipated_birthday.getlocal.strftime("%B %d, %Y") %>
+                Anticipated Birth: <%= animal.anticipated_birthday.getlocal.strftime("%m/%d/%Y") %>
                 <br>
                 <br>
                 <strong>Location:</strong> <%= Animal.get_breeder(animal.id).city%>, <%= Animal.get_breeder(animal.id).country%>

@@ -12,26 +12,44 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :name, "Breeder Name", class:'label' %>
+    <div class="control">
+      <%= f.text_field :name, class:'input' %>
+    </div>
   </div>
+
   <div class="field">
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.label :city, "City", class:'label' %>
+    <div class="control">
+      <%= f.text_field :city, class:'input' %>
+    </div>
   </div>
+
   <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.label :country, "Country", class:'label' %>
+    <div class="control">
+      <%= f.text_field :country, class:'input' %>
+    </div>
   </div>
+
   <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.label :price_level, "Price Level", class:'label' %>
+    <div class="control">
+      <%= f.text_field :price_level, class:'input' %>
+    </div>
   </div>
+
   <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
+    <%= f.label :address, "Address", class:'label' %>
+    <div class="control">
+      <%= f.text_field :address, class:'input' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+
+  <div class="field">
+    <div class="control">
+      <%= f.submit 'Submit', class: 'button is-warning' %>
+    </div>
   </div>
 <% end %>

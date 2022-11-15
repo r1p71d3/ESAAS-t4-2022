@@ -15,57 +15,12 @@
 
 <div class="columns is-mobile is-centered">
   <div class="column is-10">
-    <%= form_tag animals_path do %>
-      <div class="field">
-        <%= label :animal, :name, "Animal Name", class:'label' %>
-        <div class="control">
-          <%= text_field :animal, 'name', class:'input' %>
-        </div>
-      </div>
+    <%= render 'form' %>
+  </div>
+</div>
 
-      <div class="field">
-        <%= label :animal, :animal_type, "Animal Type", class:'label' %>
-        <div class="control">
-          <%= text_field :animal, 'animal_type', class:'input' %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= label :animal, :breed, "Animal Breed", class:'label' %>
-        <div class="control">
-          <%= text_field :animal, 'breed', class:'input' %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= label :animal, :price, "Price", class:'label' %>
-        <div class="control">
-          <%= text_field :animal, 'price', class:'input' %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= label :animal, :anticipated_birthday, "Anticipated Birthday", class:'label' %>
-        <div class="control">
-          <%= text_field :animal, 'anticipated_birthday', class:'input' %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= label :animal, :breeder_id, "Breeder id", class:'label' %>
-        <div class="control">
-          <%= text_field :animal, 'breeder_id', class:'input' %>
-        </div>
-      </div>
-
-      <div class="field is-grouped">
-        <div class="control">
-          <%= submit_tag 'Submit', class: 'button is-warning' %>
-        </div>
-        <div class="control">
-          <%= link_to 'Cancel', animals_url, class: 'button' %>
-        </div>
-      </div>
-    <% end %>
+<div class="columns is-mobile is-centered">
+  <div class="column is-10">
+    <%= link_to 'Cancel', animals_url, class: 'button' %>
   </div>
 </div>

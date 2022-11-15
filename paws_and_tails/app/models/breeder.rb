@@ -1,4 +1,9 @@
 class Breeder < ApplicationRecord
+  validates :name, presence: true
+  validates :city, presence: true
+  validates :country, presence: true
+  validates :price_level, presence: true
+  validates :address, presence: true
   has_many :animals, dependent: :destroy
 
   def self.get_animals(breeder_id)
