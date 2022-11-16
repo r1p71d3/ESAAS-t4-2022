@@ -204,6 +204,9 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    orderly (0.1.1)
+      capybara (>= 1.1)
+      rspec (>= 2.14)
     pg (1.4.4)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -339,6 +342,7 @@ DEPENDENCIES
   guard-shell
   importmap-rails
   jbuilder
+  orderly
   pg
   puma (~> 5.0)
   rails (~> 7.0.4)

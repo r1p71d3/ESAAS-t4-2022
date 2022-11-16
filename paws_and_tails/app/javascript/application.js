@@ -116,13 +116,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
  * @param sorting
  */
 function sendFetchToAnimals(city, country, sorting) {
-    let token = getToken();
+    // let token = getToken();
     fetch("/animals/api/sort_location", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest',
-            'X-CSRF-Token': token
+            // 'X-Requested-With': 'XMLHttpRequest',
+            // 'X-CSRF-Token': token
         },
         body: JSON.stringify({
             "city": city,
@@ -251,6 +251,6 @@ function notFoundBanner() {
  * For fetch call - get token
  * @returns {string}
  */
-function getToken() {
-    return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-}
+// function getToken() {
+//     return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+// }
