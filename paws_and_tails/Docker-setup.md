@@ -68,3 +68,5 @@ sudo docker system prune
 ## Save for future reference
 
 `docker run --rm -p 3000:3000 --env-file .env looouisz/paws_and_tails`
+
+`docker build --platform linux/amd64 --no-cache -t paws .`
