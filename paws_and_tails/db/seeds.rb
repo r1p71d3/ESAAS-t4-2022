@@ -7,72 +7,72 @@
 #   Character.create(name: "Luke", movie: movies.first)
 # the id of the breeders are from 17 to 24
 
-# breeders = [
-#   {
-#     "name": "Ragdoll Breeder",
-#     "city": "Boston",
-#     "country": "United States",
-#     "price_level": "$$$",
-#     "address": "Hello Street, Boston, MA",
-#     "email": "test@test.com"
-#   },
-# {
-#   "name": "Happy Puppies",
-#   "city": "New York",
-#   "country": "United States",
-#   "price_level": "$$$$",
-#   "address": "1600 Broadway, New York, NY",
-#   "email": "test@test.com"
-# },
-# {
-#   "name": "Noble Breed",
-#   "city": "Brussels",
-#   "country": "Belgium",
-#   "price_level": "$$",
-#   "address": "David Goffin Street, Brussels, Belgium",
-#   "email": "test@test.com"
-# },
-# {
-#   "name": "Northwestern Wildcats",
-#   "city": "Evanston",
-#   "country": "United States",
-#   "price_level": "$$$",
-#   "address": "2400 Sheridan Road, Evanston, IL",
-#   "email": "test@test.com"
-# },
-# {
-#   "name": "New China Pets",
-#   "city": "Beijing",
-#   "country": "China",
-#   "price_level": "$",
-#   "address": "Sanyuanqiao, Beijing, China",
-#   "email": "test@test.com"
-# },
-# {
-#   "name": "Rainbow Lively",
-#   "city": "Montreal",
-#   "country": "Canada",
-#   "price_level": "$$$",
-#   "address": "Rogers Bank Street, Montreal, Quebec",
-#   "email": "test@test.com"
-# },
-# {
-#   "name": "Amazing Creatures",
-#   "city": "New York",
-#   "country": "United States",
-#   "price_level": "$$",
-#   "address": "1 York Road, New York, New York",
-#   "email": "test@test.com"
-# },
-# {
-#   "name": "Billionaire's Choice",
-#   "city": "Sydney",
-#   "country": "Australia",
-#   "price_level": "$$$$",
-#   "address": "4 Cathedral Parkway, Strathfield, NSW",
-#   "email": "test@test.com"
-# }
-# ]
+breeders = [
+  {
+    "name": "Ragdoll Breeder",
+    "city": "Boston",
+    "country": "United States",
+    "price_level": "$$$",
+    "address": "Hello Street, Boston, MA",
+    "email": "test@test.com"
+  },
+{
+  "name": "Happy Puppies",
+  "city": "New York",
+  "country": "United States",
+  "price_level": "$$$$",
+  "address": "1600 Broadway, New York, NY",
+  "email": "test@test.com"
+},
+{
+  "name": "Noble Breed",
+  "city": "Brussels",
+  "country": "Belgium",
+  "price_level": "$$",
+  "address": "David Goffin Street, Brussels, Belgium",
+  "email": "test@test.com"
+},
+{
+  "name": "Northwestern Wildcats",
+  "city": "Evanston",
+  "country": "United States",
+  "price_level": "$$$",
+  "address": "2400 Sheridan Road, Evanston, IL",
+  "email": "test@test.com"
+},
+{
+  "name": "New China Pets",
+  "city": "Beijing",
+  "country": "China",
+  "price_level": "$",
+  "address": "Sanyuanqiao, Beijing, China",
+  "email": "test@test.com"
+},
+{
+  "name": "Rainbow Lively",
+  "city": "Montreal",
+  "country": "Canada",
+  "price_level": "$$$",
+  "address": "Rogers Bank Street, Montreal, Quebec",
+  "email": "test@test.com"
+},
+{
+  "name": "Amazing Creatures",
+  "city": "New York",
+  "country": "United States",
+  "price_level": "$$",
+  "address": "1 York Road, New York, New York",
+  "email": "test@test.com"
+},
+{
+  "name": "Billionaire's Choice",
+  "city": "Sydney",
+  "country": "Australia",
+  "price_level": "$$$$",
+  "address": "4 Cathedral Parkway, Strathfield, NSW",
+  "email": "test@test.com"
+}
+]
 
 animals = [
   {
@@ -419,9 +419,9 @@ animals = [
   }
 ]
 
-# breeders.each do | breeder |
-#   Breeder.create!(breeder)
-# end
+breeders.each do | breeder |
+  Breeder.create!(breeder)
+end
 
 animals.each do | animal |
   Animal.create!(animal)
