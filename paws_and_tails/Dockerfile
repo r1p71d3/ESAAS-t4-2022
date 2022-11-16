@@ -4,7 +4,6 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
     build-essential \
     gnupg2 \
     less \
-    nano \
     git \
     libpq-dev \
     postgresql-client \
