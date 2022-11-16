@@ -29,7 +29,7 @@ COPY . .
 # SECRET_KEY_BASE or RAILS_MASTER_KEY is required in production, but we don't
 # want real secrets in the image or image history. The real secret is passed in
 # at run time
-ARG SECRET_KEY_BASE=fakekeyforassets
+ARG SECRET_KEY_BASE=$SECRET_KEY_BASE
 RUN bin/rails assets:clobber && bundle exec rails assets:precompile
 
 # Run database migrations when deploying to Render. It is not great, maybe there's a better way?
