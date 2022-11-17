@@ -15,7 +15,8 @@ RSpec.describe "Breeders", type: :request do
                                     "city": "Boston",
                                     "country": "United States",
                                     "price_level": "$$$",
-                                    "address": "Hello Street, Boston, MA")
+                                    "address": "Hello Street, Boston, MA",
+                                    "email": "breeder@email.com")
       get("/breeders/#{new_breeder.id}")
       expect(response).to have_http_status(200)
     end
@@ -35,7 +36,8 @@ RSpec.describe "Breeders", type: :request do
                                     "city": "Boston",
                                     "country": "United States",
                                     "price_level": "$$$",
-                                    "address": "Hello Street, Boston, MA")
+                                    "address": "Hello Street, Boston, MA",
+                                    "email": "breeder@email.com")
       get("/breeders/#{new_breeder.id}/edit")
       # expect(assigns(:breeder)).to eql new_breeder
       expect(response).to have_http_status(200)
@@ -51,7 +53,8 @@ RSpec.describe "Breeders", type: :request do
                                     "city": "Boston",
                                     "country": "United States",
                                     "price_level": "$$$",
-                                    "address": "Hello Street, Boston, MA")
+                                    "address": "Hello Street, Boston, MA",
+                                    "email": "breeder@email.com")
       expect(Breeder.find_by(name: "Ragdoll Breeder")).not_to be_nil
     end
 
@@ -65,7 +68,8 @@ RSpec.describe "Breeders", type: :request do
                   "city": "Boston",
                   "country": "United States",
                   "price_level": "$$$",
-                  "address": "Hello Street, Boston, MA"}
+                  "address": "Hello Street, Boston, MA",
+                  "email": "breeder@email.com"}
       })
       expect(response).to redirect_to "/breeders/1"
     end
@@ -78,7 +82,8 @@ RSpec.describe "Breeders", type: :request do
                   "city": "Boston",
                   "country": "United States",
                   "price_level": "$$$",
-                  "address": "Hello Street, Boston, MA"}
+                  "address": "Hello Street, Boston, MA",
+                  "email": "breeder@email.com"}
       })
       expect(response).to have_http_status(200)
     end
@@ -90,7 +95,8 @@ RSpec.describe "Breeders", type: :request do
                                     "city": "Boston",
                                     "country": "United States",
                                     "price_level": "$$$",
-                                    "address": "Hello Street, Boston, MA")
+                                    "address": "Hello Street, Boston, MA",
+                                    "email": "breeder@email.com")
       put("/breeders/#{new_breeder.id}", params: {
         breeder: {country: "England"}
       })
@@ -103,7 +109,8 @@ RSpec.describe "Breeders", type: :request do
                                     "city": "Boston",
                                     "country": "United States",
                                     "price_level": "$$$",
-                                    "address": "Hello Street, Boston, MA")
+                                    "address": "Hello Street, Boston, MA",
+                                    "email": "breeder@email.com")
       allow_any_instance_of(Breeder).to receive(:valid?).and_return(false)
 
       put("/breeders/#{new_breeder.id}", params: {
@@ -119,7 +126,8 @@ RSpec.describe "Breeders", type: :request do
                                     "city": "Boston",
                                     "country": "United States",
                                     "price_level": "$$$",
-                                    "address": "Hello Street, Boston, MA")
+                                    "address": "Hello Street, Boston, MA",
+                                    "email": "breeder@email.com")
       delete("/breeders/#{new_breeder.id}")
       expect(Breeder.find_by(name: "Test Breeder")).to be_nil
       expect(response).to redirect_to breeders_url

@@ -70,3 +70,5 @@ sudo docker system prune
 `docker run --rm -p 3000:3000 --env-file .env looouisz/paws_and_tails`
 
 `docker build --platform linux/amd64 --no-cache -t paws .`
+
+`git subtree push --prefix paws_and_tails heroku dev:master`

@@ -22,7 +22,8 @@ When("I create some sample animal data") do
                  "breed": "Ragdoll",
                  "price": 100,
                  "anticipated_birthday": "2023-09-01",
-                 "breeder_id": 2)
+                 "breeder_id": 2,
+                 "image_link": "/test/image/jpg")
 end
 
 When(/I visit this breeder's page: "([^"]*)"$/) do | breeder |

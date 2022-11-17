@@ -95,6 +95,16 @@ Feature: display and interact with a list of animals
     And I should not see "Hello Kitty" on animal's page
 
   @javascript
+  Scenario: refine the search by city and country
+    Given I am on the animals page
+    When I constraint the search of "city" with "Montreal" on the animal's page
+    When I constraint the search of "country" with "Canada" on the animal's page
+    When I click the button to refine search on animals' page
+    And I should see "Hello Kitty" on animal's page
+    And I should not see "Sleeping Pajamas" on animal's page
+    And I should not see "Parody" on animal's page
+
+  @javascript
   Scenario: sort by breed
     Given I am on the animals page
     When I sort the animal page by "price"
