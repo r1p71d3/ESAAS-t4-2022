@@ -63,6 +63,8 @@ touch .env
 #   comments to the newly created .env file
 ```
 
+Note that if you directly download the `.env` file from Coursework, it might be `env` rather than `.env`. You can either use terminal or you favorite editor (like VSCode) to change it from `env` to `.env`.
+
 3. Build project docker image
 
 Run `docker-compose build` to build the image.
