@@ -4,6 +4,10 @@
 
 We are building a SAAS app that aims to connect pet finders and breeders together and improve the whole pet-finding business.
 
+![](https://img.shields.io/badge/ruby-3.1.2-informational) ![](https://img.shields.io/badge/rails-7.0.4-informational)
+
+![](https://img.shields.io/badge/coverage-98%25-brightgreen) ![](https://img.shields.io/badge/build-passing-green) ![](https://img.shields.io/badge/tests-288%20passed-red)
+
 <!-- TOC -->
 * [Paws & Tails](#paws--tails)
   * [Team Members](#team-members)
@@ -117,3 +121,7 @@ Just run this script:
 ```bash
 sudo docker system prune
 ```
+
+## Deployment
+
+The app is deployed at: [https://paws-and-tails.herokuapp.com/](https://paws-and-tails.herokuapp.com/)
