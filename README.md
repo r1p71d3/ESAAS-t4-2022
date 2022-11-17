@@ -8,13 +8,20 @@ We are building a SAAS app that aims to connect pet finders and breeders togethe
 
 ![](https://img.shields.io/badge/coverage-98%25-brightgreen) ![](https://img.shields.io/badge/build-passing-green) ![](https://img.shields.io/badge/tests-288%20passed-red)
 
-<!-- TOC -->
-* [Paws & Tails](#paws--tails)
-  * [Team Members](#team-members)
-  * [For the TA Team](#for-the-ta-team)
-    * [Run the Project Locally in Docker (Recommended)](#run-the-project-locally-in-docker--recommended-)
-    * [Troubleshoot](#troubleshoot)
-<!-- TOC -->
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Paws & Tails](#paws-tails)
+  - [Team Members](#team-members)
+  - [For the TA Team](#for-the-ta-team)
+    - [Run the Project Locally in Docker (Recommended)](#run-the-project-locally-in-docker-recommended)
+    - [Troubleshoot](#troubleshoot)
+  - [Deployment](#deployment)
+
+<!-- /code_chunk_output -->
+
 
 ## Team Members
 
