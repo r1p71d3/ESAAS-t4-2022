@@ -2,12 +2,24 @@ require 'rails_helper'
 
 RSpec.describe "Animals", type: :request do
   before(:each) do
-    breeder_test = Breeder.create!("name": "Ragdoll Breeder",
-                                   "city": "Boston",
-                                   "country": "United States",
-                                   "price_level": "$$$",
-                                   "address": "Hello Street, Boston, MA",
-                                   "email": "breeder@email.com")
+    Breeder.create!("name": "Ragdoll Breeder",
+                    "city": "Boston",
+                    "country": "United States",
+                    "price_level": "$$$",
+                    "address": "Hello Street, Boston, MA",
+                    "email": "breeder@email.com")
+    Breeder.create!("name": "New China Pets",
+                    "city": "Beijing",
+                    "country": "China",
+                    "price_level": "$",
+                    "address": "Sanyuanqiao, Beijing, China",
+                    "email": "test@test.com")
+    Breeder.create!("name": "Rainbow Lively",
+                    "city": "Montreal",
+                    "country": "Canada",
+                    "price_level": "$$$",
+                    "address": "Rogers Bank Street, Montreal, Quebec",
+                    "email": "test@test.com")
   end
 
   describe "GET /index" do
@@ -150,159 +162,121 @@ RSpec.describe "Animals", type: :request do
     end
   end
 
-  # describe "POST /animals/api/sort_location" do
-  #   it "sort animald by location" do
-  #     animal1 = Animal.create!("name": "Hello Kitty",
-  #                                 "animal_type": "Cat",
-  #                                 "breed": "Ragdoll",
-  #                                 "price": 100,
-  #                                 "anticipated_birthday": "2023-09-01",
-  #                                 "breeder_id": 1,
-  #                                 "image_link": "/test/image2.jpg")
-  #
-  #     animal2 = Animal.create!("name": "Hello Doggy",
-  #                                "animal_type": "Dog",
-  #                                "breed": "Boxer",
-  #                                "price": 150,
-  #                                "anticipated_birthday": "2023-09-02",
-  #                                "breeder_id": 1,
-  #                                "image_link": "/test/image2.jpg")
-  #
-  #     animal3 = Animal.create!("name": "Hello Ducky",
-  #                                "animal_type": "Duck",
-  #                                "breed": "Rubber",
-  #                                "price": 150,
-  #                                "anticipated_birthday": "2023-09-03",
-  #                                "breeder_id": 2,
-  #                                "image_link": "/test/image3.jpg")
-  #
-  #     breeder1 = Animal.get_breeder(1)
-  #     breeder2 = Animal.get_breeder(3)
-  #     city1 = breeder1.city
-  #     city2 = breeder2.city
-  #
-  #     json_file = post("/animals/api/sort_location", params: {
-  #       city: city1,
-  #       country: "Any Country",
-  #       sorting_method: "Any"
-  #     })
-  #
-  #
-  #
-  #     expect animals length = 2
-  #     expect animals[0] == Doggy
-  #
-  #   end
-  # end
+  describe "POST /animals/api/sort_location, sort animals" do
+    before(:each) do
+      Animal.create!("name": "Hello Kitty",
+                     "animal_type": "Cat",
+                     "breed": "Ragdoll",
+                     "price": 100,
+                     "anticipated_birthday": "2023-09-01",
+                     "breeder_id": 1,
+                     "image_link": "/test/image/jpg")
+      Animal.create!("name": "Brady",
+                     "animal_type": "Dog",
+                     "breed": "German Shepherd",
+                     "price": 1200,
+                     "anticipated_birthday": "2022-12-30",
+                     "breeder_id": 3,
+                     "image_link": "/test/image/jpg")
+      Animal.create!("name": "Chimelu",
+                     "animal_type": "Dog",
+                     "breed": "Chihuahua",
+                     "price": 374.5,
+                     "anticipated_birthday": "2022-12-18",
+                     "breeder_id": 2,
+                     "image_link": "/test/image/jpg")
+    end
 
-  # describe "GET /animals/api/sort_location" do
-  #   it "returns http success" do
-  #     get :sort_location
-  #     expect(response).to have_http_status(:success)
-  #   end
-  #
-  #   it "refines animals by location" do
-  #     city = "Any City"
-  #     country = "Any Country"
-  #     sorting_method = "name"
-  #     animals = Animal.location_refine city, country
-  #     animals = animals.order(:name)
-  #     breeders = Array.new
-  #     animals.each do |each_animal|
-  #       breeders.push(Animal.get_breeder(each_animal.id))
-  #     end
-  #     expect(animals).to eq(animals)
-  #     expect(breeders).to eq(breeders)
-  #   end
-  # end
-
-
-  # describe "POST /animals/api/sort_location" do
-  #   let(:city) { "Any City" }
-  #   let(:country) { "Any Country" }
-  #   let(:sorting_method) { "Any" }
-  #
-  #   it "returns a list of animals sorted by name" do
-  #     animals = Animal.location_refine(city, country)
-  #     animals = animals.order(:name)
-  #     breeders = Array.new
-  #
-  #     animals.each do |each_animal|
-  #       breeders.push(Animal.get_breeder(each_animal.id))
-  #     end
-  #
-  #     expect(subject.sort_location(city, country, sorting_method)).to eq({animals: animals, breeders: breeders})
-  #   end
-  # end
-
-  # describe "POST /animals/api/sort_location" do
-  #   it "returns animals sorted by location" do
-  #     breeder1 = Breeder.create!("name": "Ragdoll Breeder",
-  #                                    "city": "New York",
-  #                                    "country": "United States",
-  #                                    "price_level": "$$$",
-  #                                    "address": "Hello Street, New York, MA",
-  #                                    "email": "breeder1@email.com")
-  #     breeder2 = Breeder.create!("name": "Pup Breeder",
-  #                                    "city": "Boston",
-  #                                    "country": "United States",
-  #                                    "price_level": "$$",
-  #                                    "address": "Hello Street, Boston, MA",
-  #                                    "email": "breeder2@email.com")
-  #     animal1 = Animal.create!("name": "Hello Kitty",
-  #                              "animal_type": "Cat",
-  #                              "breed": "Ragdoll",
-  #                              "price": 100,
-  #                                "anticipated_birthday": "2023-09-01",
-  #                                "breeder_id": 1,
-  #                                "image_link": "/test/image2.jpg")
-  #
-  #     animal2 = Animal.create!("name": "Hello Doggy",
-  #                                "animal_type": "Dog",
-  #                                "breed": "Boxer",
-  #                                "price": 150,
-  #                                "anticipated_birthday": "2023-09-02",
-  #                                "breeder_id": 1,
-  #                                "image_link": "/test/image2.jpg")
-  #
-  #     animal3 = Animal.create!("name": "Hello Ducky",
-  #                                "animal_type": "Duck",
-  #                                "breed": "Rubber",
-  #                              "price": 150,
-  #                                 "anticipated_birthday": "2023-09-03",
-  #                                 "breeder_id": 2,
-  #                                 "image_link": "/test/image3.jpg")
-  #     city = "New York"
-  #     country = "Any Country"
-  #     # animals = Animal.location_refine city, country
-  #     # animals = animals.order(:name)
-  #     # breeders = Array.new
-  #     # animals.each do |each_animal|
-  #     #   breeders.push(Animal.get_breeder(each_animal.id))
-  #     # end
-  #     post("/animals/api/sort_location", params: {
-  #             city: "New York",
-  #             country: "Any Country",
-  #             sorting_method: "name"
-  #           })
-  #
-  #     # expect(response.body).to eq({animals: animals, breeders: breeders}.to_json)
-  #     expect(JSON.parse(response.body)).to eq({animals: [animal1, animal2]})
-  #   end
-  # end
-
-  describe "POST /animals/api/sort_location" do
-    it "returns animals sorted by location" do
-      new_animal = Animal.create!("name": "Hello Kitty",
-                                  "animal_type": "Cat",
-                                  "breed": "Ragdoll",
-                                  "price": 100,
-                                  "anticipated_birthday": "2023-09-01",
-                                  "breeder_id": 1,
-                                  "image_link": "/test/image/jpg")
-      post("/animals/api/sort_location", params: { city: "Any City", country: "Any Country", sorting: "name" })
+    it "returns animals sorted by name" do
+      post "/animals/api/sort_location", xhr: true, :params => {city: "Any City", country: "Any Country", sorting: "name"}
       expect(response).to have_http_status(:success)
-      expect(response.body).to eq(@animals.to_json)
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body["animals"][0]["name"]).to eq("Brady")
+      expect(parsed_body["animals"][1]["name"]).to eq("Chimelu")
+      expect(parsed_body["animals"][2]["name"]).to eq("Hello Kitty")
+    end
+
+    it "returns animals sorted by city" do
+      post "/animals/api/sort_location", xhr: true, :params => {city: "Any City", country: "Any Country", sorting: "city"}
+      expect(response).to have_http_status(:success)
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body["animals"][0]["name"]).to eq("Chimelu")
+      expect(parsed_body["animals"][1]["name"]).to eq("Hello Kitty")
+      expect(parsed_body["animals"][2]["name"]).to eq("Brady")
+    end
+
+    it "returns animals sorted by price" do
+      post "/animals/api/sort_location", xhr: true, :params => {city: "Any City", country: "Any Country", sorting: "price"}
+      expect(response).to have_http_status(:success)
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body["animals"][0]["name"]).to eq("Hello Kitty")
+      expect(parsed_body["animals"][1]["name"]).to eq("Chimelu")
+      expect(parsed_body["animals"][2]["name"]).to eq("Brady")
+    end
+  end
+
+  describe "POST /animals/api/sort_location, refine location search" do
+    before(:each) do
+      Animal.create!("name": "Hello Kitty",
+                     "animal_type": "Cat",
+                     "breed": "Ragdoll",
+                     "price": 100,
+                     "anticipated_birthday": "2023-09-01",
+                     "breeder_id": 1,
+                     "image_link": "/test/image/jpg")
+      Animal.create!("name": "Brady",
+                     "animal_type": "Dog",
+                     "breed": "German Shepherd",
+                     "price": 1200,
+                     "anticipated_birthday": "2022-12-30",
+                     "breeder_id": 3,
+                     "image_link": "/test/image/jpg")
+      Animal.create!("name": "Chimelu",
+                     "animal_type": "Dog",
+                     "breed": "Chihuahua",
+                     "price": 374.5,
+                     "anticipated_birthday": "2022-12-18",
+                     "breeder_id": 2,
+                     "image_link": "/test/image/jpg")
+    end
+
+    it "filters by city" do
+      post "/animals/api/sort_location", xhr: true, :params => {city: "Beijing", country: "Any Country", sorting: "Any"}
+      expect(response).to have_http_status(:success)
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body["animals"][0]["name"]).to eq("Chimelu")
+      expect(parsed_body["animals"].length).to be 1
+    end
+
+    it "filters by country" do
+      post "/animals/api/sort_location", xhr: true, :params => {city: "Any City", country: "United States", sorting: "Any"}
+      expect(response).to have_http_status(:success)
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body["animals"][0]["name"]).to eq("Hello Kitty")
+      expect(parsed_body["animals"].length).to be 1
+    end
+
+    it "filters by city and country" do
+      Animal.create!("name": "Noah",
+                     "animal_type": "Cat",
+                     "breed": "Wildcat",
+                     "price": 1100,
+                     "anticipated_birthday": "2022-12-25",
+                     "breeder_id": 3,
+                     "image_link": "/test/image/jpg")
+
+      post "/animals/api/sort_location", xhr: true, :params => {city: "Montreal", country: "Canada", sorting: "name"}
+      expect(response).to have_http_status(:success)
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body["animals"][0]["name"]).to eq("Brady")
+      expect(parsed_body["animals"][1]["name"]).to eq("Noah")
+      expect(parsed_body["animals"].length).to be 2
     end
   end
 end
