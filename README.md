@@ -95,6 +95,12 @@ Then, you have the project running! Go to `0.0.0.0:3000`
 
 5. Rspec and Cucumber Testing
 
+Before running the tests, please make sure `docker-compose up` is running. Especially the `firefox` image must be up and running, because Cucumber use `Selenium` to talk to the simulated browser.
+
+```bash
+docker-compose up
+```
+
 - Run all tests at once
 
 We use `guard` to automatically run all the testing and it will also listen to `app` changes and automatically rerun the test.
