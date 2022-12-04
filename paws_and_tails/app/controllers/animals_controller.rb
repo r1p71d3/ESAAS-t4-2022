@@ -25,7 +25,12 @@ class AnimalsController < ApplicationController
 
   # POST /animals
   def create
-    @animal = Animal.new(animal_params)
+    this_animal_params = animal_params
+    if this_animal_params[:breeder_id].nil?
+      this_animal_params[:breeder_id] = UserToBreeder.get_breeder_id(current_user.id.to_s)
+    end
+
+    @animal = Animal.new(this_animal_params)
 
     if @animal.save
       redirect_to @animal, notice: 'Animal was successfully created.'
@@ -49,6 +54,13 @@ class AnimalsController < ApplicationController
     redirect_to animals_url, notice: 'Animal was successfully destroyed.'
   end
 
+  def redesigned_destroy
+    @animal = Animal.find(params[:id])
+    @animal.destroy
+    redirect_to animals_url, notice: 'Animal was successfully destroyed.'
+  end
+
+
   def sort_location
     city = params[:city] == "Any City" ? nil : params[:city]
     country = params[:country] == "Any Country" ? nil : params[:country]
@@ -58,6 +70,8 @@ class AnimalsController < ApplicationController
 
     if sorting_method == "Any" || sorting_method == "name"
       animals = animals.order(:name)
+    elsif sorting_method == "breeder_id"
+      animals = animals.includes(:breeder).order("breeders.name")
     elsif sorting_method != "city" && sorting_method != "country"
       animals = animals.order(sorting_method)
     else

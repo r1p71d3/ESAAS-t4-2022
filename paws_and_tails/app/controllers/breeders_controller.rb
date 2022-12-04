@@ -1,5 +1,6 @@
 class BreedersController < ApplicationController
   before_action :set_breeder, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:edit, :update]
 
   # GET /breeders
   def index
@@ -14,7 +15,15 @@ class BreedersController < ApplicationController
 
   # GET /breeders/new
   def new
-    @breeder = Breeder.new
+    if is_admin || !UserToBreeder.exists?(user_id: current_user.id.to_s)
+      @breeder = Breeder.new
+    elsif !is_admin && UserToBreeder.exists?(user_id: current_user.id.to_s)
+      flash[:notice] = "You have already linked with a breeder"
+      redirect_to root_url
+    else
+      flash[:warning] = "You don't have the permission"
+      redirect_to root_url
+    end
   end
 
   # GET /breeders/1/edit
@@ -26,6 +35,9 @@ class BreedersController < ApplicationController
     @breeder = Breeder.new(breeder_params)
 
     if @breeder.save
+      if current_user.user_type.to_s != "admin"
+        UserToBreeder.create!(:user_id => current_user.id.to_s, :breeder_id => @breeder.id)
+      end
       redirect_to @breeder, notice: 'Breeder was successfully created.'
     else
       render :new
@@ -43,6 +55,19 @@ class BreedersController < ApplicationController
 
   # DELETE /breeders/1
   def destroy
+    # redirect_to root_url
+    # UserToBreeder.where(:breeder_id => @breeder.id).destroy
+
+    UserToBreeder.where(breeder_id: @breeder[:id]).first.destroy
+
+    @breeder.destroy
+    redirect_to breeders_url, notice: 'Breeder was successfully destroyed.'
+  end
+
+  def redesigned_destroy
+    @breeder = Breeder.find(params[:id])
+    UserToBreeder.where(breeder_id: params[:id]).first.destroy if UserToBreeder.exists?(breeder_id: params[:id])
+
     @breeder.destroy
     redirect_to breeders_url, notice: 'Breeder was successfully destroyed.'
   end

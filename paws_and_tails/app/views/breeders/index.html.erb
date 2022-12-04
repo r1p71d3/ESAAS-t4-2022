@@ -32,8 +32,12 @@
 </div>
 
 
-<div class="columns">
-  <div class="column has-text-right">
-    <%= link_to 'New Breeder', new_breeder_path, class:"button is-warning is-light" %>
+
+<% if !current_user.nil? && current_user[:user_type].to_s == "admin" %>
+  <div class="columns">
+    <div class="column has-text-right">
+      <%= link_to 'New Breeder', new_breeder_path, class:"button is-warning is-light" %>
+    </div>
   </div>
-</div>
+<% end %>
+
