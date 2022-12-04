@@ -110,7 +110,7 @@
   <div class="column has-text-right">
     <%= link_to "Back", breeders_path, class: 'button is-info' %>
 
-    <% if current_user[:user_type].to_s == "admin" || UserToBreeder.get_user_id(@breeder.id.to_s).to_s == current_user.id.to_s %>
+    <% if !current_user.nil? && (current_user[:user_type].to_s == "admin" || UserToBreeder.get_user_id(@breeder.id.to_s).to_s == current_user.id.to_s) %>
       <%= link_to "Delete", "/breeders/redesigned_destroy/" + @breeder.id.to_s, class: 'button is-danger'%>
       <%= link_to "Edit", edit_breeder_path(@breeder), class: 'button is-warning' %>
       <%= link_to 'New Animal', new_animal_path, class:"button is-warning is-light" %>
