@@ -1,16 +1,20 @@
 class BreedersController < ApplicationController
   before_action :set_breeder, only: [:show, :edit, :update, :destroy]
+  before_action :has_auth, only: [:edit, :update, :destroy, :new]
   before_action :authorize, only: [:edit, :update]
 
   # GET /breeders
   def index
     @breeders = Breeder.all
+    @is_admin = is_admin
   end
 
   # GET /breeders/1
   def show
     breeder_id = params[:id]
     @animals = Breeder.get_animals(breeder_id)
+    @is_admin_or_current_breeder = is_admin_or_current_breeder
+    @not_this_user = not_this_user
   end
 
   # GET /breeders/new
@@ -77,8 +81,6 @@ class BreedersController < ApplicationController
   def set_breeder
     @breeder = Breeder.find(params[:id])
   end
-
-
 
   # Only allow a trusted parameter "white list" through.
   def breeder_params

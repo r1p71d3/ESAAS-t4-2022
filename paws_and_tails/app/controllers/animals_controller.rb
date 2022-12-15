@@ -1,5 +1,6 @@
 class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy]
+  before_action :has_auth, only: [:edit, :update, :destroy, :new]
   skip_before_action :verify_authenticity_token
 
   # GET /animals
@@ -7,11 +8,13 @@ class AnimalsController < ApplicationController
     @animals = Animal.all.order(:name)
     @cities = Breeder.get_city_all.sort
     @countries = Breeder.get_country_all.sort
+    @is_admin = is_admin
   end
 
   # GET /animals/1
   def show
     @breeder = Animal.get_breeder(params[:id])
+    @is_admin_or_current_breeder = is_admin_or_current_breeder
   end
 
   # GET /animals/new
