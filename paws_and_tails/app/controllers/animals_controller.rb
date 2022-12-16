@@ -1,6 +1,6 @@
 class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy]
-  before_action :has_auth, only: [:edit, :update, :destroy, :new]
+  # before_action :has_auth, only: [:edit, :update, :destroy, :new]
   skip_before_action :verify_authenticity_token
 
   # GET /animals

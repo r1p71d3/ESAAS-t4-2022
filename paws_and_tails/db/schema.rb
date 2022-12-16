@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_03_194736) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_15_183651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_194736) do
     t.string "email", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "from_user_id", null: false
+    t.bigint "to_user_id", null: false
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_user_id"], name: "index_messages_on_from_user_id"
+    t.index ["to_user_id"], name: "index_messages_on_to_user_id"
+  end
+
   create_table "user_to_breeders", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "breeder_id", null: false
@@ -56,6 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_194736) do
   end
 
   add_foreign_key "animals", "breeders"
+  add_foreign_key "messages", "users", column: "from_user_id"
+  add_foreign_key "messages", "users", column: "to_user_id"
   add_foreign_key "user_to_breeders", "breeders"
   add_foreign_key "user_to_breeders", "users"
 end

@@ -1,6 +1,5 @@
 class BreedersController < ApplicationController
   before_action :set_breeder, only: [:show, :edit, :update, :destroy]
-  before_action :has_auth, only: [:edit, :update, :destroy, :new]
   before_action :authorize, only: [:edit, :update]
 
   # GET /breeders
@@ -15,6 +14,8 @@ class BreedersController < ApplicationController
     @animals = Breeder.get_animals(breeder_id)
     @is_admin_or_current_breeder = is_admin_or_current_breeder
     @not_this_user = not_this_user
+
+    @user_id = UserToBreeder.get_user_id(@breeder.id)
   end
 
   # GET /breeders/new

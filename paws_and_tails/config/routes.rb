@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get '/breeders/redesigned_destroy/:id', to: "breeders#redesigned_destroy"
   get '/animals/redesigned_destroy/:id', to: "animals#redesigned_destroy"
 
+  get '/messages/:to_user_id', to: "messages#show"
+  post '/messages/api/new', to: "messages#create"
+  get '/messages/inbox/show', to: "messages#inbox"
+
   # get "/link", to: "users#link_user_with_breeder"
 
   # get 'animal/index'

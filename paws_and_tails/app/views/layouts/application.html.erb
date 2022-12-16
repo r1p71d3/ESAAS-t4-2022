@@ -45,6 +45,11 @@
       <a class="navbar-item" href="/breeders">
         Find by Breeders
       </a>
+      <% if current_user %>
+        <a class="navbar-item" href="/messages/inbox/show">
+          Message Inbox
+        </a>
+      <% end %>
 
       <!--      <div class="navbar-item has-dropdown is-hoverable">-->
       <!--        <a class="navbar-link">-->
