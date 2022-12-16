@@ -8,4 +8,8 @@ class User < ApplicationRecord
     User.find_by_id(id)[:user_name]
   end
 
+  # def self.destroy_dependencies(id)
+  #   Waitlist.remove_user_from_waitlist(id)
+  #   Message.remove_messages_user(id)
+  # end
 end

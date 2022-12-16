@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
 
+  def not_found_method
+    render "404"
+  end
+
   private
 
   def current_user

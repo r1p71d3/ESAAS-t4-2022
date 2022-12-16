@@ -19,4 +19,9 @@ class Message < ApplicationRecord
 
     distinct_id
   end
+
+  # def self.remove_messages_user(id)
+  #   Message.where(from_user_id: id).destroy_all
+  #   Message.where(to_user_id: id).destroy_all
+  # end
 end

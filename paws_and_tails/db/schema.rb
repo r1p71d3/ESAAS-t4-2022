@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_15_183651) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_16_174706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,9 +65,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_183651) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "waitlists", force: :cascade do |t|
+    t.bigint "animal_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["animal_id"], name: "index_waitlists_on_animal_id"
+    t.index ["user_id"], name: "index_waitlists_on_user_id"
+  end
+
   add_foreign_key "animals", "breeders"
   add_foreign_key "messages", "users", column: "from_user_id"
   add_foreign_key "messages", "users", column: "to_user_id"
   add_foreign_key "user_to_breeders", "breeders"
   add_foreign_key "user_to_breeders", "users"
+  add_foreign_key "waitlists", "animals"
+  add_foreign_key "waitlists", "users"
 end

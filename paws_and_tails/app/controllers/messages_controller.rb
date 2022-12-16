@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.create!(messages_param)
+    Message.create!(messages_param)
     new_messages = Message.show_conversation(messages_param["from_user_id"].to_i, messages_param["to_user_id"].to_i)
 
     from_user_name = User.get_user_name(messages_param["from_user_id"])

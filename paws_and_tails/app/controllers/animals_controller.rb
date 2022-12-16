@@ -15,6 +15,16 @@ class AnimalsController < ApplicationController
   def show
     @breeder = Animal.get_breeder(params[:id])
     @is_admin_or_current_breeder = is_admin_or_current_breeder
+    if current_user.nil?
+      @already_waitlist = false
+    else
+      @already_waitlist = Waitlist.exists?(animal_id: params[:id], user_id: current_user.id)
+      if @already_waitlist
+        this_waitlist = Waitlist.where(animal_id: params[:id], user_id: current_user.id).first
+        @total_place = Waitlist.where(animal_id: params[:id]).count
+        @current_place = Waitlist.where(animal_id: params[:id]).where("created_at < ?", this_waitlist.created_at).count + 1
+      end
+    end
   end
 
   # GET /animals/new
