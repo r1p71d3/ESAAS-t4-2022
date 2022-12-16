@@ -88,8 +88,10 @@
 </div>
 
 
-<div class="columns">
-  <div class="column has-text-right">
-    <%= link_to 'New Animal', new_animal_path, class:"button is-warning is-light" %>
+<% if @is_admin %>
+  <div class="columns">
+    <div class="column has-text-right">
+      <%= link_to 'New Animal', new_animal_path, class:"button is-warning is-light" %>
+    </div>
   </div>
-</div>
+<% end %>

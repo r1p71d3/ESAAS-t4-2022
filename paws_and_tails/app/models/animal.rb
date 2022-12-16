@@ -2,7 +2,7 @@ class Animal < ApplicationRecord
   validates :name, presence: true
   validates :animal_type, presence: true
   validates :breed, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, numericality: { only_numeric: true }
   validates :anticipated_birthday, presence: true
   validates :breeder_id, presence: true
   belongs_to :breeder

@@ -46,11 +46,20 @@
   </div>
 
   <div class="field">
-    <%= f.label :breeder_id, "Breeder id", class:'label' %>
+    <%= f.label :image_link, "Image Link", class:'label' %>
     <div class="control">
-      <%= f.text_field :breeder_id, class:'input' %>
+      <%= f.text_field :image_link, class:'input' %>
     </div>
   </div>
+
+  <% if current_user[:user_type].to_s == "admin" %>
+    <div class="field">
+      <%= f.label :breeder_id, "Breeder id", class:'label' %>
+      <div class="control">
+        <%= f.text_field :breeder_id, class:'input' %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="field">
     <div class="control">

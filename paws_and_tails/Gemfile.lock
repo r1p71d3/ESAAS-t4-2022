@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
@@ -132,6 +133,8 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    email_validator (2.2.4)
+      activemodel
     erubi (1.11.0)
     ffi (1.15.5)
     formatador (1.1.0)
@@ -334,12 +337,14 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1, >= 3.1.12)
   bootsnap
   capybara
   cucumber-rails
   database_cleaner
   debug
   dotenv-rails
+  email_validator
   guard
   guard-cucumber
   guard-rspec
