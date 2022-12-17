@@ -2,6 +2,31 @@ Given /the following breeders exist/ do |breeders_table|
   breeders_table.hashes.each do |breeder|
     Breeder.create breeder
   end
+
+  User.create!("user_name": "test_1",
+               "password": "test",
+               "user_type": "breeder")
+
+  User.create!("user_name": "test_2",
+               "password": "test",
+               "user_type": "breeder")
+
+  User.create!("user_name": "test_3",
+               "password": "test",
+               "user_type": "breeder")
+
+  UserToBreeder.create!("user_id": 1,
+                        "breeder_id": 1)
+
+  UserToBreeder.create!("user_id": 2,
+                        "breeder_id": 2)
+
+  UserToBreeder.create!("user_id": 3,
+                        "breeder_id": 3)
+
+  User.create!("user_name": "test_4",
+               "password": "test",
+               "user_type": "breeder")
 end
 
 Then(/(.*) seed breeders should exist/) do | n_seeds |

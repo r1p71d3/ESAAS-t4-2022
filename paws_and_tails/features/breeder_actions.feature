@@ -26,6 +26,12 @@ Feature: display and interact with a list of breeders
     Then I should see "Bobby" on breeder's page
 
   Scenario: opening edit page and editing
+    Given I am on the login page
+    Then I should see "Log In" on breeder's page
+    When I fill in "User Name" with "test_1" on the breeder's page
+    When I fill in "Password" with "test" on the breeder's page
+    And I click the button of "Log In" on this breeder's page
+    Then I should see "Logged in!" on breeder's page
     Given I am on the breeder details page of "HappyPets"
     And I click the link of "Edit" on this breeder's page
     Then I should see "Edit Breeder" on breeder's page
@@ -41,6 +47,12 @@ Feature: display and interact with a list of breeders
     Then I should see "Good Morning" on breeder's page
 
   Scenario: canceling edit
+    Given I am on the login page
+    Then I should see "Log In" on breeder's page
+    When I fill in "User Name" with "test_1" on the breeder's page
+    When I fill in "Password" with "test" on the breeder's page
+    And I click the button of "Log In" on this breeder's page
+    Then I should see "Logged in!" on breeder's page
     Given I am on the breeder details page of "HappyPets"
     When I click the link of "Edit" on this animal's page
     Then I should see "Edit Breeder" on animal's page
@@ -55,14 +67,27 @@ Feature: display and interact with a list of breeders
     And I should see "$$$" on animal's page
 
   Scenario: deleting breeder
+    Given I am on the login page
+    Then I should see "Log In" on breeder's page
+    When I fill in "User Name" with "test_1" on the breeder's page
+    When I fill in "Password" with "test" on the breeder's page
+    And I click the button of "Log In" on this breeder's page
+    Then I should see "Logged in!" on breeder's page
     Given I am on the breeder details page of "HappyPets"
     When I click the link of "Delete" on this breeder's page
     Then I should see "Breeder was successfully destroyed." on breeder's page
     And I should not see "HappyPets" on animal's page
 
   Scenario: adding a new breeder
+    Given I am on the login page
+    Then I should see "Log In" on breeder's page
+    When I fill in "User Name" with "test_4" on the breeder's page
+    When I fill in "Password" with "test" on the breeder's page
+    And I click the button of "Log In" on this breeder's page
+    Then I should see "Logged in!" on breeder's page
     Given I am on the breeders page
-    When I click the link of "New Breeder" on this breeder's page
+    When I click the link of "My Profile" on this breeder's page
+    When I click the link of "Link with a Breeder" on this breeder's page
     Then I should see "Add a New Breeder" on breeder's page
     When I fill in "Breeder Name" with "John Doe" on the breeder's page
     And I fill in "Email" with "haha@haha.com" on the breeder's page

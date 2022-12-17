@@ -32,9 +32,7 @@ class WaitlistsController < ApplicationController
     animal_id = waitlists_param["animal_id"]
     user_id = waitlists_param["user_id"]
 
-    unless Waitlist.exists?(animal_id: animal_id, user_id: user_id)
-      Waitlist.destroy(waitlists_param)
-    end
+    Waitlist.where(animal_id: animal_id, user_id: user_id).first.destroy
 
     respond_to do | format |
       format.json { render json: {status: "left"} }

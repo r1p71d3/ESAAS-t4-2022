@@ -166,7 +166,7 @@
                 },
                 body: JSON.stringify({
                     "animal_id": <%= @animal.id.to_s %>,
-                    "user_id": <%= current_user.id.to_s %>
+                    "user_id": <%= current_user.nil? ? "" : current_user.id.to_s %>
                 }),
                 credentials: 'same-origin'
             })
@@ -197,7 +197,7 @@
                 },
                 body: JSON.stringify({
                     "animal_id": <%= @animal.id.to_s %>,
-                    "user_id": <%= current_user.id.to_s %>
+                    "user_id": <%= current_user.nil? ? "" : current_user.id.to_s %>
                 }),
                 credentials: 'same-origin'
             })

@@ -62,10 +62,10 @@ class AnimalsController < ApplicationController
   end
 
   # DELETE /animals/1
-  def destroy
-    @animal.destroy
-    redirect_to animals_url, notice: 'Animal was successfully destroyed.'
-  end
+  # def destroy
+  #   @animal.destroy
+  #   redirect_to animals_url, notice: 'Animal was successfully destroyed.'
+  # end
 
   def redesigned_destroy
     @animal = Animal.find(params[:id])
