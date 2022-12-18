@@ -20,6 +20,29 @@ RSpec.describe "Animals", type: :request do
                     "price_level": "$$$",
                     "address": "Rogers Bank Street, Montreal, Quebec",
                     "email": "test@test.com")
+
+    User.create!("user_name": "test_1",
+                 "password": "test",
+                 "user_type": "breeder")
+
+    User.create!("user_name": "test_2",
+                 "password": "test",
+                 "user_type": "breeder")
+
+    User.create!("user_name": "test_3",
+                 "password": "test",
+                 "user_type": "breeder")
+
+    UserToBreeder.create!("user_id": 1,
+                          "breeder_id": 1)
+
+    UserToBreeder.create!("user_id": 2,
+                          "breeder_id": 2)
+
+    UserToBreeder.create!("user_id": 3,
+                          "breeder_id": 3)
+
+    ENV['stub_user_id'] = nil
   end
 
   describe "GET /index" do
@@ -46,14 +69,16 @@ RSpec.describe "Animals", type: :request do
 
   describe "GET /new" do
     it "should render new animal template" do
-      Animal.new
-      get("/animals/new")
+      ENV['stub_user_id'] = "1"
+      get '/animals/new'
       expect(response).to have_http_status(200)
     end
   end
 
   describe "GET /edit" do
     it "should render edit animal template" do
+      ENV['stub_user_id'] = "1"
+
       new_animal = Animal.create!("name": "Hello Kitty",
                                   "animal_type": "Cat",
                                   "breed": "Ragdoll",
@@ -70,6 +95,9 @@ RSpec.describe "Animals", type: :request do
   end
 
   describe "POST /create" do
+    before(:each) do
+      ENV['stub_user_id'] = "1"
+    end
     it "should create a new animal" do
       new_animal = Animal.create!("name": "Hello Kitty",
                                   "animal_type": "Cat",
@@ -86,13 +114,13 @@ RSpec.describe "Animals", type: :request do
     end
 
     it "create and redirect" do
+      ENV['stub_user_id'] = "1"
       post("/animals", params: {
         animal: {"name": "Hello Kitty",
                   "animal_type": "Cat",
                   "breed": "Ragdoll",
                   "price": 100,
                   "anticipated_birthday": "2023-09-01",
-                  "breeder_id": 1,
                  "image_link": "/test/image/jpg"}
       })
       expect(response).to redirect_to "/animals/1"
@@ -115,6 +143,9 @@ RSpec.describe "Animals", type: :request do
   end
 
   describe "PUT /update" do
+    before(:each) do
+      ENV['stub_user_id'] = "1"
+    end
     it "update the corresponding animal" do
       new_animal = Animal.create!("name": "Hello Kitty",
                                   "animal_type": "Cat",
@@ -149,6 +180,7 @@ RSpec.describe "Animals", type: :request do
 
   describe "POST /delete" do
     it "delete a created animal" do
+      ENV['stub_user_id'] = "1"
       new_animal = Animal.create!("name": "Hello Kitty",
                                   "animal_type": "Cat",
                                   "breed": "Ragdoll",
@@ -156,7 +188,7 @@ RSpec.describe "Animals", type: :request do
                                   "anticipated_birthday": "2023-09-01",
                                   "breeder_id": 1,
                                   "image_link": "/test/image/jpg")
-      delete("/animals/#{new_animal.id}")
+      get "/animals/redesigned_destroy/" + new_animal.id.to_s
       expect(Animal.find_by(name: "Kitty")).to be_nil
       expect(response).to redirect_to animals_url
     end
@@ -214,6 +246,16 @@ RSpec.describe "Animals", type: :request do
 
       expect(parsed_body["animals"][0]["name"]).to eq("Hello Kitty")
       expect(parsed_body["animals"][1]["name"]).to eq("Chimelu")
+      expect(parsed_body["animals"][2]["name"]).to eq("Brady")
+    end
+
+    it "returns animals sorted by breeder" do
+      post "/animals/api/sort_location", xhr: true, :params => {city: "Any City", country: "Any Country", sorting: "breeder_id"}
+      expect(response).to have_http_status(:success)
+      parsed_body = JSON.parse(response.body)
+
+      expect(parsed_body["animals"][0]["name"]).to eq("Chimelu")
+      expect(parsed_body["animals"][1]["name"]).to eq("Hello Kitty")
       expect(parsed_body["animals"][2]["name"]).to eq("Brady")
     end
   end

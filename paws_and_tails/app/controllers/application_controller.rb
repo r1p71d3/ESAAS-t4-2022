@@ -1,5 +1,14 @@
 class ApplicationController < ActionController::Base
 
+  if Rails.env.test?
+    prepend_before_action :stub_current_user
+    def stub_current_user
+      if !ENV["stub_user_id"].nil?
+        session[:user_id] = ENV["stub_user_id"]
+      end
+    end
+  end
+
   def not_found_method
     render "404"
   end

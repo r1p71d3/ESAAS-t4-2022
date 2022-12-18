@@ -12,6 +12,24 @@ Given(/the following animals exist/) do |animals_table|
                   "address": "Rogers Bank Street, Montreal, Quebec",
                   "email": "test@test.com")
 
+  User.create!("user_name": "test_1",
+               "password": "test",
+               "user_type": "breeder")
+
+  User.create!("user_name": "test_2",
+               "password": "test",
+               "user_type": "breeder")
+
+  User.create!("user_name": "normal_user",
+               "password": "user",
+               "user_type": "petfinder")
+
+  UserToBreeder.create!("user_id": 1,
+                        "breeder_id": 1)
+
+  UserToBreeder.create!("user_id": 2,
+                        "breeder_id": 2)
+
   animals_table.hashes.each do |animal|
     Animal.create animal
   end
@@ -27,6 +45,10 @@ end
 
 When(/^(?:|I )click the link of "([^"]*)" on this animal's page$/) do | link |
   click_link(link)
+end
+
+Given("I am on the login page") do
+  visit '/login'
 end
 
 When(/^(?:|I )click the button of "([^"]*)" on this animal's page$/) do | button |
@@ -96,6 +118,9 @@ When(/^(?:|I )sort the animal page by "([^"]*)"$/) do | criteria |
   elsif criteria == "city"
     expect(page).to have_css "#sort-city"
     find("#sort-city").click
+  elsif criteria == "breeder"
+    expect(page).to have_css "#sort-breeder_id"
+    find("#sort-breeder_id").click
   end
 end
 

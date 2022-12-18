@@ -84,7 +84,7 @@ Capybara.server_port = 3000
 Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
 Capybara.app_host = "http://#{IPSocket.getaddress(Socket.gethostname)}:3000"
 Capybara.default_max_wait_time = 10
-
+Capybara.current_session.driver.browser.file_detector = nil
 
 
 

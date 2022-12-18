@@ -20,7 +20,7 @@ class BreedersController < ApplicationController
 
   # GET /breeders/new
   def new
-    if is_admin || !UserToBreeder.exists?(user_id: current_user.id.to_s)
+    if is_admin || (current_user.user_type.to_s == "breeder" && !UserToBreeder.exists?(user_id: current_user.id.to_s))
       @breeder = Breeder.new
     elsif !is_admin && UserToBreeder.exists?(user_id: current_user.id.to_s)
       flash[:notice] = "You have already linked with a breeder"
@@ -59,15 +59,15 @@ class BreedersController < ApplicationController
   end
 
   # DELETE /breeders/1
-  def destroy
-    # redirect_to root_url
-    # UserToBreeder.where(:breeder_id => @breeder.id).destroy
-
-    UserToBreeder.where(breeder_id: @breeder[:id]).first.destroy
-
-    @breeder.destroy
-    redirect_to breeders_url, notice: 'Breeder was successfully destroyed.'
-  end
+  # def destroy
+  #   # redirect_to root_url
+  #   # UserToBreeder.where(:breeder_id => @breeder.id).destroy
+  #
+  #   UserToBreeder.where(breeder_id: @breeder[:id]).first.destroy
+  #
+  #   @breeder.destroy
+  #   redirect_to breeders_url, notice: 'Breeder was successfully destroyed.'
+  # end
 
   def redesigned_destroy
     @breeder = Breeder.find(params[:id])

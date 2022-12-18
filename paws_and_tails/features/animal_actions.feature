@@ -23,6 +23,12 @@ Feature: display and interact with a list of animals
     And I should see "Dog" on animal's page
 
   Scenario: opening edit page and editing
+    Given I am on the login page
+    Then I should see "Log In" on animal's page
+    When I fill in "User Name" with "test_1" on the animal's page
+    When I fill in "Password" with "test" on the animal's page
+    And I click the button of "Log In" on this animal's page
+    Then I should see "Logged in!" on animal's page
     Given I am on the animal details page of "Sleeping Pajamas"
     When I click the link of "Edit" on this animal's page
     Then I should see "Edit Animal" on animal's page
@@ -38,6 +44,12 @@ Feature: display and interact with a list of animals
     And I should see "Hans" on animal's page
 
   Scenario: canceling edit
+    Given I am on the login page
+    Then I should see "Log In" on animal's page
+    When I fill in "User Name" with "test_1" on the animal's page
+    When I fill in "Password" with "test" on the animal's page
+    And I click the button of "Log In" on this animal's page
+    Then I should see "Logged in!" on animal's page
     Given I am on the animal details page of "Sleeping Pajamas"
     When I click the link of "Edit" on this animal's page
     Then I should see "Edit Animal" on animal's page
@@ -52,21 +64,34 @@ Feature: display and interact with a list of animals
     And I should see "600" on animal's page
 
   Scenario: deleting animal
+    Given I am on the login page
+    Then I should see "Log In" on animal's page
+    When I fill in "User Name" with "test_1" on the animal's page
+    When I fill in "Password" with "test" on the animal's page
+    And I click the button of "Log In" on this animal's page
+    Then I should see "Logged in!" on animal's page
     Given I am on the animal details page of "Sleeping Pajamas"
     When I click the link of "Delete" on this animal's page
     Then I should see "Animal was successfully destroyed." on animal's page
     And I should not see "Sleeping Pajamas" on animal's page
 
   Scenario: adding a new animal
+    Given I am on the login page
+    Then I should see "Log In" on animal's page
+    When I fill in "User Name" with "test_1" on the animal's page
+    When I fill in "Password" with "test" on the animal's page
+    And I click the button of "Log In" on this animal's page
+    Then I should see "Logged in!" on animal's page
     Given I am on the animals page
-    When I click the link of "New Animal" on this animal's page
-    Then I should see "Add a New Animal" on animal's page
+    When I click the link of "My Profile" on this animal's page
+    Then I click the link of "Go to my breeder profile" on this animal's page
+    Then I should see "New Animal" on animal's page
+    Then I click the link of "New Animal" on this animal's page
     When I fill in "Animal Name" with "Good Morning" on the animal's page
     And I fill in "Animal Type" with "Frog" on the animal's page
     And I fill in "Animal Breed" with "Goldfish" on the animal's page
     And I fill in "Price" with "150" on the animal's page
     And I fill in "Anticipated Birthday" with "2023-09-01" on the animal's page
-    And I fill in "Breeder id" with "1" on the animal's page
     And I click the button of "Submit" on this animal's page
     Then I should see "Animal was successfully created." on animal's page
     And I should see "Good Morning" on animal's page
@@ -117,4 +142,10 @@ Feature: display and interact with a list of animals
     Given I am on the animals page
     When I sort the animal page by "city"
     Then I should see "Sleeping Pajamas" appears before "Hello Kitty" on the animals page
+    Then I should see "Parody" appears before "Hello Kitty" on the animals page
+
+  @javascript
+  Scenario: sort by breeder
+    Given I am on the animals page
+    When I sort the animal page by "breeder"
     Then I should see "Parody" appears before "Hello Kitty" on the animals page
