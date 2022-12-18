@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Breeders", type: :request do
+  before(:each) do
+    ENV['stub_user_id'] = nil
+  end
+
+
   describe "GET /index" do
-    # pending "add some examples (or delete) #{__FILE__}"
     it "should get index" do
       get("/breeders")
       expect(response).to have_http_status(200)
@@ -24,6 +28,11 @@ RSpec.describe "Breeders", type: :request do
 
   describe "GET /new" do
     it "should render new breeder template" do
+      User.create!("user_name": "test_1",
+                   "password": "test",
+                   "user_type": "breeder")
+      ENV['stub_user_id'] = "1"
+
       Breeder.new
       get("/breeders/new")
       expect(response).to have_http_status(200)
@@ -31,6 +40,13 @@ RSpec.describe "Breeders", type: :request do
   end
 
   describe "GET /edit" do
+    before(:each) do
+      User.create!("user_name": "test_1",
+                   "password": "test",
+                   "user_type": "breeder")
+      ENV['stub_user_id'] = "1"
+    end
+
     it "should render edit breeder template" do
       new_breeder = Breeder.create!("name": "Ragdoll Breeder",
                                     "city": "Boston",
@@ -48,6 +64,13 @@ RSpec.describe "Breeders", type: :request do
   end
 
   describe "POST /create" do
+    before(:each) do
+      User.create!("user_name": "test_1",
+                   "password": "test",
+                   "user_type": "breeder")
+      ENV['stub_user_id'] = "1"
+    end
+
     it "should create a new breeder" do
       new_breeder = Breeder.create!("name": "Ragdoll Breeder",
                                     "city": "Boston",
@@ -87,9 +110,43 @@ RSpec.describe "Breeders", type: :request do
       })
       expect(response).to have_http_status(200)
     end
+
+    it "should not allow create breeder if already linked" do
+      ENV['stub_user_id'] = "1"
+
+      new_breeder = Breeder.create!("name": "Ragdoll Breeder",
+                                    "city": "Boston",
+                                    "country": "United States",
+                                    "price_level": "$$$",
+                                    "address": "Hello Street, Boston, MA",
+                                    "email": "breeder@email.com")
+      UserToBreeder.create!("user_id": 1,
+                            "breeder_id": 1)
+
+      get("/breeders/new")
+      expect(response).to redirect_to root_url
+    end
+
+    it "should not allow create breeder if not breeder" do
+      User.create!("user_name": "normal_user",
+                   "password": "user",
+                   "user_type": "petfinder")
+
+      ENV['stub_user_id'] = "2"
+
+      get("/breeders/new")
+      expect(response).to redirect_to root_url
+    end
   end
 
   describe "PUT /update" do
+    before(:each) do
+      User.create!("user_name": "test_1",
+                   "password": "test",
+                   "user_type": "breeder")
+      ENV['stub_user_id'] = "1"
+    end
+
     it "update the corresponding breeder" do
       new_breeder = Breeder.create!("name": "Ragdoll Breeder",
                                     "city": "Boston",
@@ -121,6 +178,13 @@ RSpec.describe "Breeders", type: :request do
   end
 
   describe "POST /delete" do
+    before(:each) do
+      User.create!("user_name": "test_1",
+                   "password": "test",
+                   "user_type": "breeder")
+      ENV['stub_user_id'] = "1"
+    end
+
     it "delete a created breeder" do
       new_breeder = Breeder.create!("name": "Ragdoll Breeder",
                                     "city": "Boston",
@@ -128,7 +192,7 @@ RSpec.describe "Breeders", type: :request do
                                     "price_level": "$$$",
                                     "address": "Hello Street, Boston, MA",
                                     "email": "breeder@email.com")
-      delete("/breeders/#{new_breeder.id}")
+      get "/breeders/redesigned_destroy/" + new_breeder.id.to_s
       expect(Breeder.find_by(name: "Test Breeder")).to be_nil
       expect(response).to redirect_to breeders_url
     end
