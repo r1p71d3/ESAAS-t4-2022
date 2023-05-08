@@ -11,6 +11,13 @@
   <div class="column is-12 has-text-centered">
     <span class="subtitle is-size-3">Search for Breeder Location</span>
   </div>
+  <!-- Search -->
+  <%= form_with(url: animals_path, method: :get, local: true) do |form| %>
+    <%= form.label :search, 'Search' %>
+    <%= form.text_field :search, value: params[:search] %>
+    <%= form.submit 'Search' %>
+  <% end %>
+  <!-- Search -->
   <div class="column is-6 has-text-right">
     <div id="dropdown-city" class="dropdown mr-3">
       <div class="dropdown-trigger">

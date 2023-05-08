@@ -5,7 +5,8 @@ class AnimalsController < ApplicationController
 
   # GET /animals
   def index
-    @animals = Animal.all.order(:name)
+    # @animals = Animal.all.order(:name)
+    @animals = Animal.search(params[:search])
     @cities = Breeder.get_city_all.sort
     @countries = Breeder.get_country_all.sort
     @is_admin = is_admin
