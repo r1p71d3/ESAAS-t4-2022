@@ -6,7 +6,7 @@ class AnimalsController < ApplicationController
   # GET /animals
   def index
     # @animals = Animal.all.order(:name)
-    @animals = Animal.search(params[:search])
+    @animals = Animal.search(params[:search], params[:city], params[:country])
     @cities = Breeder.get_city_all.sort
     @countries = Breeder.get_country_all.sort
     @is_admin = is_admin
@@ -76,11 +76,12 @@ class AnimalsController < ApplicationController
 
 
   def sort_location
+    search_query = params[:search]
     city = params[:city] == "Any City" ? nil : params[:city]
     country = params[:country] == "Any Country" ? nil : params[:country]
     sorting_method = params[:sorting]
 
-    animals = Animal.location_refine city, country
+    animals = Animal.search(search_query, city, country)
 
     if sorting_method == "Any" || sorting_method == "name"
       animals = animals.order(:name)
@@ -98,8 +99,12 @@ class AnimalsController < ApplicationController
       breeders.push(Animal.get_breeder(each_animal.id))
     end
 
-    respond_to do | format |
-      format.json { render json: {animals: animals, breeders: breeders} }
+    # respond_to do | format |
+    #   format.json { render json: {animals: animals, breeders: breeders} }
+    # end
+
+    respond_to do |format|
+      format.json { render json: {html: render_to_string(partial: "animal_grid", locals: { animals_var: animals }, formats: [:html])} }
     end
   end
 

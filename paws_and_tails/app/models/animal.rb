@@ -13,10 +13,15 @@ class Animal < ApplicationRecord
     return breeder
   end
 
-  def self.search(search)
-    return all unless search.present?
+  def self.search(search, city = nil, country = nil)
+    query = joins(:breeder).where("animal_type LIKE :search OR breed LIKE :search OR animals.name LIKE :search OR breeders.name LIKE :search", search: "%#{search}%")
 
-    joins(:breeder).where("animal_type LIKE :search OR breed LIKE :search OR animals.name LIKE :search OR breeders.name LIKE :search", search: "%#{search}%")
+    if city || country
+      query = query.where(breeders: {city: city}) if city
+      query = query.where(breeders: {country: country}) if country
+    end
+
+    query
   end
 
   def self.location_refine(city, country)
