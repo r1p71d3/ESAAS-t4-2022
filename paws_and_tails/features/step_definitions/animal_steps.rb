@@ -99,21 +99,9 @@ When(/^(?:|I )fill in "([^"]*)" with "([^"]*)" on the animal's page$/) do |field
   fill_in(field, :with => value)
 end
 
-# When(/I constraint the search of "([^"]*)" with "([^"]*)" on the animal's page$/) do | constraint, content |
-#   page.execute_script("document.querySelector('#current-#{constraint}').innerText='#{content}'")
-#   # find("#dropdown-#{constraint}-select-#{content}", visible: :all).click_link
-#   expect(page).to have_css "#current-#{constraint}", text: content
-# end
-
 When(/I constraint the search of "([^"]*)" with "([^"]*)" on the animal's page$/) do |constraint, content|
   select(content, from: constraint)
 end
-
-# When(/^(?:|I )click the button to refine search on animals' page$/) do
-#   expect(page).to have_css "#submit-location"
-#   find("#submit-location").click
-#   # page.execute_script("sendFetchToAnimals(document.querySelector('#current-city').innerText, document.querySelector('#current-country').innerText, 'Any');")
-# end
 
 When(/^(?:|I )click the button to refine search on animals' page$/) do
   click_button("Search")

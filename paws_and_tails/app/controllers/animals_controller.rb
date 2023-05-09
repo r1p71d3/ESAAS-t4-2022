@@ -3,15 +3,6 @@ class AnimalsController < ApplicationController
   # before_action :has_auth, only: [:edit, :update, :destroy, :new]
   skip_before_action :verify_authenticity_token
 
-  # GET /animals
-  # def index
-  #   # @animals = Animal.all.order(:name)
-  #   @animals = Animal.search(params[:search])
-  #   @cities = Breeder.get_city_all.sort
-  #   @countries = Breeder.get_country_all.sort
-  #   @is_admin = is_admin
-  # end
-
   def index
     city = params[:city] == "Any City" ? nil : params[:city]
     country = params[:country] == "Any Country" ? nil : params[:country]
