@@ -7,75 +7,31 @@
 
 <br><br>
 
+
 <div class="columns is-multiline is-centered is-mobile has-background-light">
-  <div class="column is-12 has-text-centered">
-    <span class="subtitle is-size-3">Search Listings</span>
-  </div>
-  <!-- Search -->
   <%= form_with(url: animals_path, method: :get, local: true, html: { class: 'column is-12 has-text-centered' }) do |form| %>
     <%= form.label :search, 'Search', class: 'sr-only' %>
+    <input type="hidden" name="sorting" id="sorting" value="name">
     <div class="column is-12" style="display: flex; justify-content: center;">
       <div class="field has-addons" style="max-width: 100%;">
         <div class="control is-expanded">
           <%= form.text_field :search, value: params[:search], class: 'input is-medium', placeholder: 'Search' %>
         </div>
         <div class="control">
+          <%= form.select :city, @cities.unshift('Any City'), { selected: params[:city] || 'Any City' }, { class: 'input is-medium' } %>
+        </div>
+        <div class="control">
+          <%= form.select :country, @countries.unshift('Any Country'), { selected: params[:country] || 'Any Country' }, { class: 'input is-medium' } %>
+        </div>
+        <div class="control">
           <%= form.submit 'Search', class: 'button is-warning is-medium' %>
+        </div>
+        <div class="control">
+          <button id="reset-location" class="button is-warning is-medium is-light">Reset</button>
         </div>
       </div>
     </div>
   <% end %>
-  <!-- Search -->
-  <div class="column is-6 has-text-right">
-    <div id="dropdown-city" class="dropdown mr-3">
-      <div class="dropdown-trigger">
-        <button id="dropdown-visible-city" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span id="current-city">Any City</span>
-          <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <% @cities.each do | city | %>
-            <a id="dropdown-city-select-<%= city %>" href="/dropdown/city/select" class="dropdown-item has-text-left city-dropdown-select">
-              <%= city %>
-            </a>
-          <% end %>
-          <a id="dropdown-city-select-Any City" href="/dropdown/city/select" class="dropdown-item has-text-left city-dropdown-select">
-            Any City
-          </a>
-        </div>
-      </div>
-    </div>
-    <div id="dropdown-country" class="dropdown">
-      <div class="dropdown-trigger">
-        <button id="dropdown-visible-country" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span id="current-country">Any Country</span>
-          <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <% @countries.each do | country | %>
-            <a id="dropdown-country-select-<%= country %>" href="/dropdown/country/select" class="dropdown-item has-text-left country-dropdown-select">
-              <%= country %>
-            </a>
-          <% end %>
-          <a id="dropdown-city-select-Any Country" href="/dropdown/country/select" class="dropdown-item has-text-left country-dropdown-select">
-            Any Country
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-6">
-    <button id="submit-location" class="button is-warning mr-3">Submit</button>
-    <button id="reset-location" class="button is-warning is-light">Reset</button>
-  </div>
 </div>
 
 
