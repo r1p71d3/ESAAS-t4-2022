@@ -133,6 +133,7 @@ Feature: display and interact with a list of animals
   Scenario: sort by breed
     Given I am on the animals page
     When I sort the animal page by "price"
+    And I click the button to refine search on animals' page
     Then I should see "Parody" appears before "Hello Kitty" on the animals page
     Then I should see "Parody" appears before "Sleeping Pajamas" on the animals page
     Then I should see "Hello Kitty" appears before "Sleeping Pajamas" on the animals page
@@ -141,6 +142,7 @@ Feature: display and interact with a list of animals
   Scenario: sort by city
     Given I am on the animals page
     When I sort the animal page by "city"
+    And I click the button to refine search on animals' page
     Then I should see "Sleeping Pajamas" appears before "Hello Kitty" on the animals page
     Then I should see "Parody" appears before "Hello Kitty" on the animals page
 
@@ -148,4 +150,21 @@ Feature: display and interact with a list of animals
   Scenario: sort by breeder
     Given I am on the animals page
     When I sort the animal page by "breeder"
+    And I click the button to refine search on animals' page
     Then I should see "Parody" appears before "Hello Kitty" on the animals page
+
+
+  @javascript
+  Scenario: search for animals by keyword
+    When I fill in "search" with "Parody" on the animal's page
+    And I click the button to refine search on animals' page
+    Then I should see "Parody" on animal's page
+    And I should not see "Hello Kitty" on animal's page
+    And I should not see "Sleeping Pajamas" on animal's page
+
+  @javascript
+  Scenario: search for animals by keyword and sort by price
+    When I fill in "search" with "Cat" on the animal's page
+    And I click the button to refine search on animals' page
+    And I sort the animal page by "price"
+    Then I should see "Hello Kitty" appears before "Sleeping Pajamas" on the animals page

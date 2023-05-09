@@ -3,9 +3,21 @@ class AnimalsController < ApplicationController
   # before_action :has_auth, only: [:edit, :update, :destroy, :new]
   skip_before_action :verify_authenticity_token
 
-  # GET /animals
   def index
-    @animals = Animal.all.order(:name)
+    city = params[:city] == "Any City" ? nil : params[:city]
+    country = params[:country] == "Any Country" ? nil : params[:country]
+    sorting_method = params[:sorting] || "name"
+
+    @animals = Animal.search(params[:search]).location_refine(city, country)
+
+    if sorting_method == "breeder_id"
+      @animals = @animals.includes(:breeder).order("breeders.name")
+    elsif sorting_method != "city" && sorting_method != "country"
+      @animals = @animals.order(sorting_method)
+    else
+      @animals = @animals.includes(:breeder).order("breeders.#{sorting_method}")
+    end
+
     @cities = Breeder.get_city_all.sort
     @countries = Breeder.get_country_all.sort
     @is_admin = is_admin
@@ -71,35 +83,6 @@ class AnimalsController < ApplicationController
     @animal = Animal.find(params[:id])
     @animal.destroy
     redirect_to animals_url, notice: 'Animal was successfully destroyed.'
-  end
-
-
-  def sort_location
-    city = params[:city] == "Any City" ? nil : params[:city]
-    country = params[:country] == "Any Country" ? nil : params[:country]
-    sorting_method = params[:sorting]
-
-    animals = Animal.location_refine city, country
-
-    if sorting_method == "Any" || sorting_method == "name"
-      animals = animals.order(:name)
-    elsif sorting_method == "breeder_id"
-      animals = animals.includes(:breeder).order("breeders.name")
-    elsif sorting_method != "city" && sorting_method != "country"
-      animals = animals.order(sorting_method)
-    else
-      animals = animals.includes(:breeder).order("breeders.#{sorting_method}")
-    end
-
-    breeders = Array.new
-
-    animals.each do |each_animal|
-      breeders.push(Animal.get_breeder(each_animal.id))
-    end
-
-    respond_to do | format |
-      format.json { render json: {animals: animals, breeders: breeders} }
-    end
   end
 
   private

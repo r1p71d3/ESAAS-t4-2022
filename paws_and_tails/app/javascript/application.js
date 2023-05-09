@@ -65,23 +65,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
     // ---------- Dropdown ----------
 
-    // ********** Submit Button **********
-    let submitBtn = document.querySelector("#submit-location");
-    submitBtn.addEventListener("click", function (event) {
-       event.preventDefault();
-
-        sendFetchToAnimals(document.querySelector("#current-city").innerText,
-            document.querySelector("#current-country").innerText,
-            "Any");
-    });
-
-
-    // ********** Reset Button **********
     let resetBtn = document.querySelector("#reset-location");
     resetBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        document.querySelector("#current-city").innerText = "Any City";
-        document.querySelector("#current-country").innerText = "Any Country";
+        // event.preventDefault();
+
+        let searchInput = document.querySelector("input[name='search']");
+        let citySelect = document.querySelector("select[name='city']");
+        let countrySelect = document.querySelector("select[name='country']");
+
+        searchInput.value = "";
+        citySelect.value = "Any City";
+        countrySelect.value = "Any Country";
 
         sendFetchToAnimals("Any City", "Any Country", "Any");
     });
@@ -91,21 +85,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let sortingBtnAll = document.querySelectorAll(".animal-sort-button");
     sortingBtnAll.forEach((item, index) => {
         item.addEventListener("click", function (event) {
-           event.preventDefault();
+            let sortingMethod = null;
 
-           let sortingMethod = null;
 
-           item.classList.forEach((cl_item, cl_index) => {
-               if (/sort-.*/.test(cl_item)) {
-                   sortingMethod = cl_item.split("-")[1];
-               }
-           });
+            item.classList.forEach((cl_item, cl_index) => {
+                event.preventDefault();
+                if (/sort-.*/.test(cl_item)) {
+                    sortingMethod = cl_item.split("-")[1];
+                }
+            });
 
-           sendFetchToAnimals(document.querySelector("#current-city").innerText,
-               document.querySelector("#current-country").innerText,
-               sortingMethod);
+
+            document.querySelector("#sorting").value = sortingMethod;
         });
     });
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const sortingParam = urlSearchParams.get('sorting');
+
+    if (sortingParam) {
+        const buttonToHighlight = document.querySelector(`.animal-sort-button.sort-${sortingParam}`);
+        if (buttonToHighlight) {
+            buttonToHighlight.classList.add('active-sort-button');
+        }
+    }
 });
 
 
@@ -117,7 +119,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
  */
 function sendFetchToAnimals(city, country, sorting) {
     // let token = getToken();
-    fetch("/animals/api/sort_location", {
+    // fetch("/animals/api/sort_location", {
+    fetch(`/animals?city=${encodeURIComponent(city)}&country=${encodeURIComponent(country)}&sorting=${encodeURIComponent(sorting)}`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
