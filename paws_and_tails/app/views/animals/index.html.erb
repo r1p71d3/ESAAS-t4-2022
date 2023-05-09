@@ -9,13 +9,21 @@
 
 <div class="columns is-multiline is-centered is-mobile has-background-light">
   <div class="column is-12 has-text-centered">
-    <span class="subtitle is-size-3">Search for Breeder Location</span>
+    <span class="subtitle is-size-3">Search Listings</span>
   </div>
   <!-- Search -->
-  <%= form_with(url: animals_path, method: :get, local: true) do |form| %>
-    <%= form.label :search, 'Search' %>
-    <%= form.text_field :search, value: params[:search] %>
-    <%= form.submit 'Search' %>
+  <%= form_with(url: animals_path, method: :get, local: true, html: { class: 'column is-12 has-text-centered' }) do |form| %>
+    <%= form.label :search, 'Search', class: 'sr-only' %>
+    <div class="column is-12" style="display: flex; justify-content: center;">
+      <div class="field has-addons" style="max-width: 100%;">
+        <div class="control is-expanded">
+          <%= form.text_field :search, value: params[:search], class: 'input is-medium', placeholder: 'Search' %>
+        </div>
+        <div class="control">
+          <%= form.submit 'Search', class: 'button is-warning is-medium' %>
+        </div>
+      </div>
+    </div>
   <% end %>
   <!-- Search -->
   <div class="column is-6 has-text-right">
@@ -72,7 +80,7 @@
 
 
 <div class="columns">
-  <div class="column is-12 has-text-right">
+  <div class="column is-12 has-text-center">
     <button id="sort-name" class="button is-small is-rounded animal-sort-button sort-name">Sort by Name</button>
     <button id="sort-breeder_id" class="button is-small is-rounded animal-sort-button sort-breeder_id">Sort by Breeder</button>
     <button id="sort-animal_type" class="button is-small is-rounded animal-sort-button sort-animal_type">Sort by Type</button>
